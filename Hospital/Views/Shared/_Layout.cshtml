@@ -40,24 +40,24 @@
                         @Html.AntiForgeryToken()
 
                         <ul class="nav navbar-nav ">
-                            @if ((Session["Data"] as App_User)?.Role == "Employer")
+                            @if ((Session["Data"] as App_User)?.Role == "Patient")
                             {
-                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Post a Job", "Index", "PostJob", new { area = "" }, null)</li>
+                                @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
+                                <li>@Html.ActionLink("Add a Doctor", "Index", "Doctor", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Employer Dashboard", "Index", "Employer", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("List of Applicants ", "Index", "Applicant", new { area = "" }, null)</li>
                             }
-                            @if ((Session["Data"] as App_User)?.Role == "JobSeeker")
+                            @if ((Session["Data"] as App_User)?.Role == "Patient")
                             {
-                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                                @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
                                 <li>@Html.ActionLink("Job Opening", "Index", "Search", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Job Dashboard", "Index", "JobDashboard", new { area = "" }, null)</li>
 
                             }
-                            @if ((Session["Data"] as App_User)?.Role == "Admin")
+                            @if ((Session["Data"] as App_User)?.Role == "Patient")
                             {
-                                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                                @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
                                 <li>@Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, null)</li>
                             }
 
@@ -77,7 +77,7 @@
                 {
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new
+                            @Html.ActionLink("Register As Patient", "Register", "Account", routeValues: null, htmlAttributes: new
                         {
                         id
                         = "registerLink"

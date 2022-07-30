@@ -12,11 +12,12 @@ using Job.Models;
 using Job.Services.IService;
 using Job.Services.Service;
 using Job.Data.Models.Domain;
+using Forest.Controllers;
 
 namespace Job.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : DoctorController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -80,7 +81,7 @@ namespace Job.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, false, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -88,7 +89,7 @@ namespace Job.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false});
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -123,22 +124,32 @@ namespace Job.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    App_User app_User = new App_User
-                    {
-                        IdentityId = user.Id,
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Email = model.Email,
-                        Role = model.Role
-                    };
-                    UserService = new UserService();
-                    UserService.AddUser(app_User);
+                    if (model.Specialization == null)
+                        RegisterPatient(model, user);
+                    else
+                        AddDoctor(model, user);
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void RegisterPatient(RegisterViewModel model, ApplicationUser user)
+        {
+            App_User app_User = new App_User
+            {
+                IdentityId = user.Id,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                ContactNumber = model.ContactNumber,
+                Role = "Patient",
+                Gender = model.Gender
+            };
+            UserService = new UserService();
+            UserService.AddUser(app_User);
         }
         #endregion
 

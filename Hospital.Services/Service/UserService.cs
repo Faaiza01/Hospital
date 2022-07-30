@@ -70,7 +70,6 @@ namespace Job.Services.Service
                 App_User app_User = new App_User();
                 app_User.FirstName = editProfileDto.FirstName;
                 app_User.LastName = editProfileDto.LastName;
-                app_User.Resume = editProfileDto.Resume;
                 UserDAO.EditProfile(context, app_User, userId);//Update existing user profile
                 context.SaveChanges();
             }

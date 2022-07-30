@@ -86,13 +86,13 @@
         width: 50px;
     }
 
-    .input:focus~.cut,
-    .input:not(:placeholder-shown)~.cut {
+    .input:focus ~ .cut,
+    .input:not(:placeholder-shown) ~ .cut {
         transform: translateY(8px);
     }
 
-    .input:focus~.cutConfirm,
-    .input:not(:placeholder-shown)~.cutConfirm {
+    .input:focus ~ .cutConfirm,
+    .input:not(:placeholder-shown) ~ .cutConfirm {
         transform: translateY(8px);
     }
 
@@ -108,16 +108,16 @@
         top: 20px;
     }
 
-    .input:focus~.placeholder,
-    .input:not(:placeholder-shown)~.placeholder {
+    .input:focus ~ .placeholder,
+    .input:not(:placeholder-shown) ~ .placeholder {
         transform: translateY(-30px) translateX(10px) scale(0.75);
     }
 
-    .input:not(:placeholder-shown)~.placeholder {
+    .input:not(:placeholder-shown) ~ .placeholder {
         color: #808097;
     }
 
-    .input:focus~.placeholder {
+    .input:focus ~ .placeholder {
         color: #dc2f55;
     }
 
@@ -137,9 +137,7 @@
     }
 
     .role_select {
-
         width: 100%;
-
         height: 50px;
         background-color: #303245;
         border-radius: 12px;
@@ -174,8 +172,7 @@
 {
 <div class="form">
     @Html.AntiForgeryToken()
-    <div class="title">Welcome</div>
-    <div class="subtitle">Register as a Patient</div>
+    <div class="subtitle">Add a doctor</div>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="flex">
         <div class="input-container ic1">
@@ -222,7 +219,7 @@
     </div>
 
     <div class="flex">
-   
+
         <div class="input-container ic2">
             <select class="role_select" asp-for="@Html.EditorFor(model => model.Gender)">
                 @Html.LabelFor(m => m.Gender, new { @class = "placeholder" })
@@ -231,12 +228,49 @@
                 <option value="Female">Female</option>
             </select>
 
+        </div>
+        <div class="input-container ic2">
+                @Html.DropDownListFor(model => model.Specialization
+                        , new List<SelectListItem>
+    {
+       new SelectListItem{ Text="Gynecologist", Value = "Gynecologist" },
+       new SelectListItem{ Text="Oncologist", Value = "Oncologist" },
+       new SelectListItem{ Text="Cardiologist", Value = "Cardiologist" },
+       new SelectListItem{ Text="Gastroenterologist", Value = "Gastroenterologist" },
+       new SelectListItem{ Text="Nueorologist", Value = "Nueorologist" },
+       new SelectListItem{ Text="Perdiatrician", Value = "Perdiatrician" },
+    },
+                        "Select Specialization",
+                        new { @class = "input" })
 
+
+            @*<select class="role_select" asp-for="@Html.EditorFor(model => model.Specialization)">
+                @Html.LabelFor(m => m.Specialization, new { @class = "placeholder" })
+                <option value="">Select Specialization</option>
+                <option value="Gynecologist">Gynecologist</option>
+                <option value="Oncologist">Oncologist</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Gastroenterologist">Gastroenterologist</option>
+                <option value="Nueorologist">Nueorologist</option>
+                <option value="Perdiatrician">Perdiatrician</option>
+            </select>*@
 
         </div>
     </div>
+
+    <div class="flex">
+        <div class="input-container ic1">
+            @Html.TextBoxFor(m => m.ConsultancyFee, new { @class = "input" })
+
+            <div class="cut"></div>
+            @Html.LabelFor(m => m.ConsultancyFee, new { @class = "placeholder" })
+        </div>
+
+  
+
+    </div>
     <div class="textAlign">
-        <input type="submit" value="Register" class="submit" />
+        <input type="submit" value="Add Doctor" class="submit" />
 
     </div>
 </div>
@@ -245,5 +279,5 @@
 }
 
 @section Scripts {
-@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryval")
 }

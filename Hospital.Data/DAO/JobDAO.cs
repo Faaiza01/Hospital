@@ -106,7 +106,6 @@ namespace Job.Data.DAO
                 var jobs = context.Employers.Where(c => c.JobId == item.JobId).FirstOrDefault();
                 var jobSeeker = context.AppUsers.Where(f => f.IdentityId == item.UserIdentityId).FirstOrDefault();
                 listOfApplicantsDtos1.NameOfApplicant = jobSeeker?.FirstName + ' ' + jobSeeker?.LastName;
-                listOfApplicantsDtos1.Resume = jobSeeker.Resume;
                 listOfApplicantsDtos1.Email = jobSeeker?.Email;
                 listOfApplicantsDtos1.IdentityId = jobSeeker?.IdentityId;
                 listOfApplicantsDtos1.JobTitle = jobs?.JobTitle;

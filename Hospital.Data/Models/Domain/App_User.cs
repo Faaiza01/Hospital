@@ -12,11 +12,13 @@ namespace Job.Data.Models.Domain
         [Key]
         public int UserId { get; set; }
         public string IdentityId { get; set; }
+        public string Role { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string Role { get; set; }
-        public string Resume { get; set; }
-
+        public string ContactNumber { get; set; }
+        public string Gender { get; set; }
+        public decimal ConsultancyFee { get; set; }
+        public string Specialization { get; set; }
     }
 }

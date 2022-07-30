@@ -46,12 +46,11 @@ namespace Job.Data.DAO
             var Id = context.AppUsers.Where(x => x.IdentityId == userId).Select(d => d.UserId).FirstOrDefault();
             context.AppUsers.Find(Id).FirstName = employer.FirstName;
             context.AppUsers.Find(Id).LastName = employer.LastName;
-            context.AppUsers.Find(Id).Resume = employer.Resume;
         }
 
         public string GetResumePath(JobContext context, string IdentityId)
         {
-            return context.AppUsers.Where(d => d.IdentityId == IdentityId).Select(v => v.Resume).FirstOrDefault();
+            return "";
         }
 
 
