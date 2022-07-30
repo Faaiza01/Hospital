@@ -27,7 +27,7 @@ namespace Forest.Controllers
 
         public void AddDoctor(RegisterViewModel model, ApplicationUser user)
         {
-            App_User app_User = new App_User
+            Users Users = new Users
             {
                 IdentityId = user.Id,
                 FirstName = model.FirstName,
@@ -39,7 +39,58 @@ namespace Forest.Controllers
                 Specialization = model.Specialization,
                 ConsultancyFee = model.ConsultancyFee
             };
-            UserService.AddUser(app_User);
+            UserService.AddUser(Users);
         }
+
+        public ActionResult ViewDoctors()
+        {
+            ViewBag.doctors = UserService.GetListOfDoctors();
+
+            return View(ViewBag.doctors);
+        }
+
+        //GET: EditJob/Edit
+        public ActionResult EditDoctor(int id)
+        {
+            Users doctors = UserService.GetDoctorData(id);
+            return View(doctors);
+        }
+
+        [HttpPost]
+        public ActionResult EditDoctor(int id, Users doctor)
+        {
+            try
+            {
+                UserService.EditDoctor(doctor, id);
+                return RedirectToAction("ViewDoctors", "Doctor");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //// GET: DeleteJob/Delete/5
+        public ActionResult DeleteDoctor(int id)
+        {
+            Users doctor =  UserService.GetDoctorData(id);
+            return View(doctor);
+        }
+
+        //// POST: DeleteJob/Delete/5
+        [HttpPost]
+        public ActionResult DeleteDoctor(int id, Users doctor)
+        {
+            try
+            {
+                UserService.DeleteDoctor(id);
+                return RedirectToAction("ViewDoctors", new { Controller = "Doctor" });
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

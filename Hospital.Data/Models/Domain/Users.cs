@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Job.Data.Models.Domain
 {
-    public class App_User
+    public class Users
     {
         [Key]
         public int UserId { get; set; }

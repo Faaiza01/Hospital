@@ -22,10 +22,11 @@ namespace Job.Controllers
             UserService = new UserService();
         }
         public ActionResult Index()
+        
         {
             var userId = User.Identity.GetUserId();
-            App_User app_User = UserService.GetUserData(userId);
-            Session["Data"] = app_User;
+            Users Users = UserService.GetUserData(userId);
+            Session["Data"] = Users;
             if (userId != null)
             {
                 return View();

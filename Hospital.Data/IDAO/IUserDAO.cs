@@ -11,12 +11,16 @@ namespace Job.Data.IDAO
 {
     public interface IUserDAO
     {
-        IList<App_User> GetUsers(JobContext context);
-        void AddUser(JobContext context, App_User app_User);
+        IList<Users> GetUsers(JobContext context);
+        IList<Users> GetListOfDoctors(JobContext context);
+        Users GetDoctorsData(JobContext context, int userId);
+        void EditDoctor(JobContext context, Users doctor, int userId);
+        void DeleteDoctor(JobContext context, int id);
+        void AddUser(JobContext context, Users Users);
         void RemoveUser(JobContext context, string identityId);
-        App_User GetUserData(JobContext context, string id);
-        App_User GetLoggedInUserData(JobContext context, string IdentityId);
-        void EditProfile(JobContext context, App_User employer, string userId);
+        Users GetUserData(JobContext context, string id);
+        Users GetLoggedInUserData(JobContext context, string IdentityId);
+        void EditProfile(JobContext context, Users employer, string userId);
         string GetResumePath(JobContext context, string IdentityId);
         List<AppliedJobsList> GetUserAppliedJobs(JobContext context, string UserId);
         List<SavedJobList> GetUserSavedJobs(JobContext context, string UserId);

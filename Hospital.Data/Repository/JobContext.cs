@@ -14,7 +14,9 @@ namespace Job.Data.Repository
         {
             Database.SetInitializer(new JobInitialiser());
         }
-        public DbSet<App_User> AppUsers { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Appointment> Appointment { get; set; }
+        public DbSet<Prescription> Prescription { get; set; }
         public DbSet<Employer> Employers { get; set; }
         public DbSet<AppliedJobs> AppliedJobs { get; set; }
         public DbSet<SavedJobs> SavedJobs { get; set; }

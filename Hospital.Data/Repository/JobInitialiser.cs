@@ -27,14 +27,14 @@ namespace Job.Data.Repository
             };
             context.Employers.Add(employer1);
 
-            App_User appUser1 = new App_User()
+            Users appUser1 = new Users()
             {
                 FirstName = "Faaiza",
                 LastName = "Rashid",
                 Email = "faaizarashid@hotmail.com",
                 Role = "Admin",
             };
-            context.AppUsers.Add(appUser1);
+            context.Users.Add(appUser1);
 
             context.SaveChanges();
         }

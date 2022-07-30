@@ -125,10 +125,17 @@ namespace Job.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     if (model.Specialization == null)
+                    {
                         RegisterPatient(model, user);
+                        return RedirectToAction("Index", "Home");
+
+                    }
                     else
+                    {
                         AddDoctor(model, user);
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("ViewDoctors", "Doctor");
+
+                    }
                 }
                 AddErrors(result);
             }
@@ -138,7 +145,7 @@ namespace Job.Controllers
 
         private void RegisterPatient(RegisterViewModel model, ApplicationUser user)
         {
-            App_User app_User = new App_User
+            Users Users = new Users
             {
                 IdentityId = user.Id,
                 FirstName = model.FirstName,
@@ -149,7 +156,7 @@ namespace Job.Controllers
                 Gender = model.Gender
             };
             UserService = new UserService();
-            UserService.AddUser(app_User);
+            UserService.AddUser(Users);
         }
         #endregion
 

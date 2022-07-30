@@ -1,0 +1,82 @@
+﻿@model Job.Data.Models.Domain.Users
+
+@{
+    ViewBag.Title = "DeleteDoctor";
+}
+<style>
+    .marginTop {
+        margin-top: 30px
+    }
+
+    .line {
+        border-bottom: 1px solid black;
+    }
+</style>
+<h2 class="marginTop">Delete Doctor</h2>
+<hr class="line">
+
+
+<h3>Are you sure you want to remove this doctor?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsultancyFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConsultancyFee)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+
+        </div>
+    }
+</div>

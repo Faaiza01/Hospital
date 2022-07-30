@@ -5,7 +5,9 @@ using Job.Data.Models.Domain;
 using Job.Data.Repository;
 using Job.Services.IService;
 using Job.Services.Models;
+using System;
 using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Job.Services.Service
 {
@@ -16,6 +18,46 @@ namespace Job.Services.Service
         public JobService()
         {
             JobDAO = new JobDAO();
+        }
+
+        public List<Users> GetDoctorByDepartment()
+        {
+            using (var context = new JobContext())
+            {
+               return JobDAO.GetDoctorByDepartment(context);
+            }
+        }
+
+        public List<Users> GetDoctorByDepartment(string department)
+        {
+            using (var context = new JobContext())
+            {
+                return JobDAO.GetDoctorByDepartment(context, department);
+            }
+        }
+
+        public decimal GetDoctorsFee(string userId)
+        {
+            using (var context = new JobContext())
+            {
+                return JobDAO.GetDoctorsFee(context, userId);
+            }
+        }
+
+        public void BookAppointment(BookAppointmentDto bookAppointmentDto, int userId)
+        {
+            Appointment appointment = new Appointment()
+            {
+                PatientId = userId,
+                DoctorId = Int32.Parse(bookAppointmentDto.Doctor),
+                AppointmentDateTime = bookAppointmentDto.AppointmentDateTime,
+            };
+
+            using (var context = new JobContext())
+            {
+                JobDAO.BookAppointment(context, appointment);//Add job
+                context.SaveChanges();
+            }
         }
 
         public Employer GetJob(int id)

@@ -13,39 +13,66 @@ namespace Job.Data.DAO
 {
     public class UserDAO : IUserDAO
     {
-        public IList<App_User> GetUsers(JobContext context)
+        public IList<Users> GetUsers(JobContext context)
         {
-            return context.AppUsers.ToList();
+            return context.Users.ToList();
         }
 
-        public void AddUser(JobContext context, App_User app_User)
+        public IList<Users> GetListOfDoctors(JobContext context)
         {
-            context.AppUsers.Add(app_User);
+            return context.Users.Where(x => x.Role == "Doctor").ToList();
+        }
+
+        public Users GetDoctorsData(JobContext context, int userId)
+        {
+            return context.Users.Where(x => x.UserId == userId).FirstOrDefault();
+        }
+
+        public void EditDoctor(JobContext context, Users doctor, int userId)
+        {
+            context.Users.Find(userId).FirstName = doctor.FirstName;
+            context.Users.Find(userId).LastName = doctor.LastName;
+            context.Users.Find(userId).Gender = doctor.Gender;
+            context.Users.Find(userId).ContactNumber = doctor.ContactNumber;
+            context.Users.Find(userId).Specialization = doctor.Specialization;
+            context.Users.Find(userId).ConsultancyFee = doctor.ConsultancyFee;
+            context.SaveChanges();
+        }
+
+        public void DeleteDoctor(JobContext context, int id)
+        {
+            var doctor = context.Users.Where(x => x.UserId == id).ToList();          
+            context.Users.Remove(context.Users.Find(id));
+            context.SaveChanges();
+        }
+        public void AddUser(JobContext context, Users Users)
+        {
+            context.Users.Add(Users);
             context.SaveChanges();
         }
 
         public void RemoveUser(JobContext context, string identityId)
         {
-            context.AppUsers.Remove(context.AppUsers.Where(c => c.IdentityId == identityId).FirstOrDefault());
+            context.Users.Remove(context.Users.Where(c => c.IdentityId == identityId).FirstOrDefault());
             context.SaveChanges();
         }
 
-        public App_User GetUserData(JobContext context, string id)
+        public Users GetUserData(JobContext context, string id)
         {
-            return context.AppUsers.ToList().Find(b => b.IdentityId == id);
+            return context.Users.ToList().Find(b => b.IdentityId == id);
         }
 
-        public App_User GetLoggedInUserData(JobContext context, string IdentityId)
+        public Users GetLoggedInUserData(JobContext context, string IdentityId)
         {
-            return context.AppUsers.Where(d => d.IdentityId == IdentityId).FirstOrDefault();
+            return context.Users.Where(d => d.IdentityId == IdentityId).FirstOrDefault();
         }
 
 
-        public void EditProfile(JobContext context, App_User employer, string userId)
+        public void EditProfile(JobContext context, Users employer, string userId)
         {
-            var Id = context.AppUsers.Where(x => x.IdentityId == userId).Select(d => d.UserId).FirstOrDefault();
-            context.AppUsers.Find(Id).FirstName = employer.FirstName;
-            context.AppUsers.Find(Id).LastName = employer.LastName;
+            var Id = context.Users.Where(x => x.IdentityId == userId).Select(d => d.UserId).FirstOrDefault();
+            context.Users.Find(Id).FirstName = employer.FirstName;
+            context.Users.Find(Id).LastName = employer.LastName;
         }
 
         public string GetResumePath(JobContext context, string IdentityId)

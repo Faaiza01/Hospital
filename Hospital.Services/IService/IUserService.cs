@@ -11,11 +11,15 @@ namespace Job.Services.IService
 {
     public interface IUserService
     {
-        IList<App_User> GetUsers();
-        void AddUser(App_User app_User);
+        IList<Users> GetUsers();
+        IList<Users> GetListOfDoctors();
+        Users GetDoctorData(int userId);
+        void EditDoctor(Users users, int userId);
+        void DeleteDoctor(int id);
+        void AddUser(Users Users);
         void RemoveUser(string id);
-        App_User GetUserData(string id);
-        App_User GetLoggedInUserData(string IdentityId);
+        Users GetUserData(string id);
+        Users GetLoggedInUserData(string IdentityId);
         void EditProfile(EditProfileDto editProfileDto, string userId);
         string GetResumePath(string identityId);
         IList<AppliedJobsList> GetUserAppliedJobs(string UserId);

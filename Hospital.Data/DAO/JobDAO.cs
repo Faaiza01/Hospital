@@ -7,11 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace Job.Data.DAO
 {
     public class JobDAO : IJobDAO
     {
+        public List<Users> GetDoctorByDepartment(JobContext context)
+        {           
+            //.Select(m => new SelectListItem { Text = m.FirstName, Value = m.UserId.ToString() })
+            var result=   context.Users.ToList();
+            return result;
+        }
+
+        public List<Users> GetDoctorByDepartment(JobContext context, string department)
+        {
+            //.Select(m => new SelectListItem { Text = m.FirstName, Value = m.UserId.ToString() })
+            var result = context.Users.Where(x => x.Specialization== department).ToList();
+            return result;
+        }
+
+        public decimal GetDoctorsFee(JobContext context, string userId)
+        {
+            int id = Int32.Parse(userId);
+            return context.Users.Where(x => x.UserId == id).FirstOrDefault().ConsultancyFee;
+          
+        }
+
+        public void BookAppointment(JobContext context, Appointment appointment)
+        {
+            context.Appointment.Add(appointment);
+            context.SaveChanges();
+        }
+
 
         public Employer GetJob(JobContext context, int id)
         {
@@ -104,7 +132,7 @@ namespace Job.Data.DAO
                 ListOfApplicantsDto listOfApplicantsDtos1 = new ListOfApplicantsDto();
 
                 var jobs = context.Employers.Where(c => c.JobId == item.JobId).FirstOrDefault();
-                var jobSeeker = context.AppUsers.Where(f => f.IdentityId == item.UserIdentityId).FirstOrDefault();
+                var jobSeeker = context.Users.Where(f => f.IdentityId == item.UserIdentityId).FirstOrDefault();
                 listOfApplicantsDtos1.NameOfApplicant = jobSeeker?.FirstName + ' ' + jobSeeker?.LastName;
                 listOfApplicantsDtos1.Email = jobSeeker?.Email;
                 listOfApplicantsDtos1.IdentityId = jobSeeker?.IdentityId;
