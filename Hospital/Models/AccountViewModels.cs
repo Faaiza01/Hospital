@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Job.Models
+namespace Hospital.Models
 {
  
     public class LoginViewModel

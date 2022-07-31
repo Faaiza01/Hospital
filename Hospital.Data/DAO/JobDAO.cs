@@ -1,6 +1,6 @@
-﻿using Job.Data.IDAO;
-using Job.Data.Models.Domain;
-using Job.Data.Repository;
+﻿using Hospital.Data.IDAO;
+using Hospital.Data.Models.Domain;
+using Hospital.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,38 +9,38 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Web.Mvc;
 
-namespace Job.Data.DAO
+namespace Hospital.Data.DAO
 {
-    public class JobDAO : IJobDAO
+    public class HospitalDAO : IHospitalDAO
     {
-        public List<Users> GetDoctorByDepartment(JobContext context)
+        public List<Users> GetDoctorByDepartment(HospitalContext context)
         {           
             //.Select(m => new SelectListItem { Text = m.FirstName, Value = m.UserId.ToString() })
-            var result=   context.Users.ToList();
+            var result=   context.Users.Where(x => x.Role == "Doctor").ToList();
             return result;
         }
 
-        public List<Users> GetDoctorByDepartment(JobContext context, string department)
+        public List<Users> GetDoctorByDepartment(HospitalContext context, string department)
         {
             //.Select(m => new SelectListItem { Text = m.FirstName, Value = m.UserId.ToString() })
             var result = context.Users.Where(x => x.Specialization== department).ToList();
             return result;
         }
 
-        public decimal GetDoctorsFee(JobContext context, string userId)
+        public decimal GetDoctorsFee(HospitalContext context, string userId)
         {
             int id = Int32.Parse(userId);
             return context.Users.Where(x => x.UserId == id).FirstOrDefault().ConsultancyFee;
           
         }
 
-        public void BookAppointment(JobContext context, Appointment appointment)
+        public void BookAppointment(HospitalContext context, Appointment appointment)
         {
             context.Appointment.Add(appointment);
             context.SaveChanges();
         }
 
-        public List<PAppointmentHistoryDto> GetPatientAppointmentHistory(JobContext context, int userId)
+        public List<PAppointmentHistoryDto> GetPatientAppointmentHistory(HospitalContext context, int userId)
         {
             List<PAppointmentHistoryDto> appointmentHistoryDtos = new List<PAppointmentHistoryDto>();
             var myAppointments = context.Appointment.Where(x => x.PatientId == userId).ToList();
@@ -49,6 +49,10 @@ namespace Job.Data.DAO
                 PAppointmentHistoryDto pAppointmentHistoryDto = new PAppointmentHistoryDto();
 
                 var myDoctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
+                var prescription = context.Prescription.Where(x => x.AppointmentId == item.AppointmentId).FirstOrDefault();
+
+                if (prescription != null)
+                    continue;
                 pAppointmentHistoryDto.AppointmentId = item.AppointmentId;
                 pAppointmentHistoryDto.DoctorName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
                 pAppointmentHistoryDto.ConsultancyFee = myDoctor?.ConsultancyFee;
@@ -62,14 +66,14 @@ namespace Job.Data.DAO
             return appointmentHistoryDtos;
         }
 
-        public void CancelAppointment(JobContext context, int appointmentId)
+        public void CancelAppointment(HospitalContext context, int appointmentId)
         {
             context.Appointment.Find(appointmentId).IsCancelledByPatient = true;
             context.Appointment.Find(appointmentId).Status = false;
             context.SaveChanges();
         }
 
-        public List<AppointmentDetailsDto> AppointmentDetail(JobContext context)
+        public List<AppointmentDetailsDto> AppointmentDetail(HospitalContext context)
         {
             List<AppointmentDetailsDto> appointmentDetailsDtos = new List<AppointmentDetailsDto>();
             var appointments = context.Appointment.ToList();

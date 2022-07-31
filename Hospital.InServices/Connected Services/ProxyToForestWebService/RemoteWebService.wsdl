@@ -111,7 +111,7 @@
   <wsdl:message name="GetCatalogueHttpPostOut">
     <wsdl:part name="Body" element="tns:ArrayOfMusicType" />
   </wsdl:message>
-  <wsdl:portType name="JobWebServiceSoap">
+  <wsdl:portType name="HospitalWebServiceSoap">
     <wsdl:operation name="GetOurCatalogue">
       <wsdl:input message="tns:GetOurCatalogueSoapIn" />
       <wsdl:output message="tns:GetOurCatalogueSoapOut" />
@@ -125,7 +125,7 @@
       <wsdl:output message="tns:GetCatalogueSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="JobWebServiceHttpGet">
+  <wsdl:portType name="HospitalWebServiceHttpGet">
     <wsdl:operation name="GetOurCatalogue">
       <wsdl:input message="tns:GetOurCatalogueHttpGetIn" />
       <wsdl:output message="tns:GetOurCatalogueHttpGetOut" />
@@ -139,7 +139,7 @@
       <wsdl:output message="tns:GetCatalogueHttpGetOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="JobWebServiceHttpPost">
+  <wsdl:portType name="HospitalWebServiceHttpPost">
     <wsdl:operation name="GetOurCatalogue">
       <wsdl:input message="tns:GetOurCatalogueHttpPostIn" />
       <wsdl:output message="tns:GetOurCatalogueHttpPostOut" />
@@ -153,7 +153,7 @@
       <wsdl:output message="tns:GetCatalogueHttpPostOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="JobWebServiceSoap" type="tns:JobWebServiceSoap">
+  <wsdl:binding name="HospitalWebServiceSoap" type="tns:HospitalWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetOurCatalogue">
       <soap:operation soapAction="http://tempuri.org/GetOurCatalogue" style="document" />
@@ -184,7 +184,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="JobWebServiceSoap12" type="tns:JobWebServiceSoap">
+  <wsdl:binding name="HospitalWebServiceSoap12" type="tns:HospitalWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetOurCatalogue">
       <soap12:operation soapAction="http://tempuri.org/GetOurCatalogue" style="document" />
@@ -215,7 +215,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="JobWebServiceHttpGet" type="tns:JobWebServiceHttpGet">
+  <wsdl:binding name="HospitalWebServiceHttpGet" type="tns:HospitalWebServiceHttpGet">
     <http:binding verb="GET" />
     <wsdl:operation name="GetOurCatalogue">
       <http:operation location="/GetOurCatalogue" />
@@ -245,7 +245,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="JobWebServiceHttpPost" type="tns:JobWebServiceHttpPost">
+  <wsdl:binding name="HospitalWebServiceHttpPost" type="tns:HospitalWebServiceHttpPost">
     <http:binding verb="POST" />
     <wsdl:operation name="GetOurCatalogue">
       <http:operation location="/GetOurCatalogue" />
@@ -275,17 +275,17 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="JobWebService">
-    <wsdl:port name="JobWebServiceSoap" binding="tns:JobWebServiceSoap">
+  <wsdl:service name="HospitalWebService">
+    <wsdl:port name="HospitalWebServiceSoap" binding="tns:HospitalWebServiceSoap">
       <soap:address location="http://webteach_net.hallam.shu.ac.uk/cmsmr2/RemoteWebService.asmx" />
     </wsdl:port>
-    <wsdl:port name="JobWebServiceSoap12" binding="tns:JobWebServiceSoap12">
+    <wsdl:port name="HospitalWebServiceSoap12" binding="tns:HospitalWebServiceSoap12">
       <soap12:address location="http://webteach_net.hallam.shu.ac.uk/cmsmr2/RemoteWebService.asmx" />
     </wsdl:port>
-    <wsdl:port name="JobWebServiceHttpGet" binding="tns:JobWebServiceHttpGet">
+    <wsdl:port name="HospitalWebServiceHttpGet" binding="tns:HospitalWebServiceHttpGet">
       <http:address location="http://webteach_net.hallam.shu.ac.uk/cmsmr2/RemoteWebService.asmx" />
     </wsdl:port>
-    <wsdl:port name="JobWebServiceHttpPost" binding="tns:JobWebServiceHttpPost">
+    <wsdl:port name="HospitalWebServiceHttpPost" binding="tns:HospitalWebServiceHttpPost">
       <http:address location="http://webteach_net.hallam.shu.ac.uk/cmsmr2/RemoteWebService.asmx" />
     </wsdl:port>
   </wsdl:service>

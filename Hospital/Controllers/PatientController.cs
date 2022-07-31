@@ -1,7 +1,7 @@
-﻿using Job.Data;
-using Job.Data.Models.Domain;
-using Job.Services.IService;
-using Job.Services.Service;
+﻿using Hospital.Data;
+using Hospital.Data.Models.Domain;
+using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -13,21 +13,21 @@ namespace Forest.Controllers
 {
     public class PatientController : Controller
     {
-        private IJobService JobService;
+        private IHospitalService HospitalService;
         private IUserService UserService;
 
 
         public PatientController()
         {
-            JobService = new JobService();
+            HospitalService = new HospitalService();
             UserService = new UserService();
 
         }
         // GET: Patient
         public ActionResult Index()
         {
-            var model = new Job.Data.BookAppointmentDto();
-            var data = JobService.GetDoctorByDepartment();
+            var model = new Hospital.Data.BookAppointmentDto();
+            var data = HospitalService.GetDoctorByDepartment();
             model.DoctorsData = GetSelectListItems(data);
             ViewData["DoctorsData"] = GetSelectListItems(data);
 
@@ -41,8 +41,8 @@ namespace Forest.Controllers
             {
                 var userId = User.Identity.GetUserId();
                 Users Users = UserService.GetUserData(userId);
-                JobService.BookAppointment(appointment, Users.UserId);
-                return RedirectToAction("Index");
+                HospitalService.BookAppointment(appointment, Users.UserId);
+                return RedirectToAction("Index", "Appointment");
             }
             catch (Exception ex)
             {
@@ -55,8 +55,8 @@ namespace Forest.Controllers
         {
             try
             {
-                var model = new Job.Data.BookAppointmentDto();
-                var data  = JobService.GetDoctorByDepartment(id);
+                var model = new Hospital.Data.BookAppointmentDto();
+                var data  = HospitalService.GetDoctorByDepartment(id);
                 model.DoctorsData = GetSelectListItems(data);
                 ViewData["DoctorsData"] = model.DoctorsData;
                 return View();
@@ -83,7 +83,7 @@ namespace Forest.Controllers
 
         public JsonResult GetFee(string id)
         {
-            var fee = JobService.GetDoctorsFee(id);
+            var fee = HospitalService.GetDoctorsFee(id);
 
             return Json(fee, JsonRequestBehavior.AllowGet);
         }

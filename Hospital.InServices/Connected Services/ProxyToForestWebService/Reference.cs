@@ -8,34 +8,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Job.InServices.ProxyToJobWebService {
+namespace Hospital.InServices.ProxyToHospitalWebService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyToJobWebService.JobWebServiceSoap")]
-    public interface JobWebServiceSoap {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyToHospitalWebService.HospitalWebServiceSoap")]
+    public interface HospitalWebServiceSoap {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOurCatalogue", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Job.InServices.ProxyToJobWebService.MusicType[] GetOurCatalogue();
+        Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetOurCatalogue();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOurCatalogue", ReplyAction="*")]
-        System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.MusicType[]> GetOurCatalogueAsync();
+        System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.MusicType[]> GetOurCatalogueAsync();
         
         // CODEGEN: Generating message contract since message GetOurCatalogueByAuthenticatingRequest has headers
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOurCatalogueByAuthenticating", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse GetOurCatalogueByAuthenticating(Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest request);
+        Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse GetOurCatalogueByAuthenticating(Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetOurCatalogueByAuthenticating", ReplyAction="*")]
-        System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse> GetOurCatalogueByAuthenticatingAsync(Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest request);
+        System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse> GetOurCatalogueByAuthenticatingAsync(Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCatalogue", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Job.InServices.ProxyToJobWebService.MusicType[] GetCatalogue();
+        Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetCatalogue();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetCatalogue", ReplyAction="*")]
-        System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.MusicType[]> GetCatalogueAsync();
+        System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.MusicType[]> GetCatalogueAsync();
     }
     
     /// <remarks/>
@@ -211,12 +211,12 @@ namespace Job.InServices.ProxyToJobWebService {
     public partial class GetOurCatalogueByAuthenticatingRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Job.InServices.ProxyToJobWebService.HeaderLogin HeaderLogin;
+        public Hospital.InServices.ProxyToHospitalWebService.HeaderLogin HeaderLogin;
         
         public GetOurCatalogueByAuthenticatingRequest() {
         }
         
-        public GetOurCatalogueByAuthenticatingRequest(Job.InServices.ProxyToJobWebService.HeaderLogin HeaderLogin) {
+        public GetOurCatalogueByAuthenticatingRequest(Hospital.InServices.ProxyToHospitalWebService.HeaderLogin HeaderLogin) {
             this.HeaderLogin = HeaderLogin;
         }
     }
@@ -228,79 +228,79 @@ namespace Job.InServices.ProxyToJobWebService {
     public partial class GetOurCatalogueByAuthenticatingResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public Job.InServices.ProxyToJobWebService.MusicType[] GetOurCatalogueByAuthenticatingResult;
+        public Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetOurCatalogueByAuthenticatingResult;
         
         public GetOurCatalogueByAuthenticatingResponse() {
         }
         
-        public GetOurCatalogueByAuthenticatingResponse(Job.InServices.ProxyToJobWebService.MusicType[] GetOurCatalogueByAuthenticatingResult) {
+        public GetOurCatalogueByAuthenticatingResponse(Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetOurCatalogueByAuthenticatingResult) {
             this.GetOurCatalogueByAuthenticatingResult = GetOurCatalogueByAuthenticatingResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface JobWebServiceSoapChannel : Job.InServices.ProxyToJobWebService.JobWebServiceSoap, System.ServiceModel.IClientChannel {
+    public interface HospitalWebServiceSoapChannel : Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class JobWebServiceSoapClient : System.ServiceModel.ClientBase<Job.InServices.ProxyToJobWebService.JobWebServiceSoap>, Job.InServices.ProxyToJobWebService.JobWebServiceSoap {
+    public partial class HospitalWebServiceSoapClient : System.ServiceModel.ClientBase<Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap>, Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap {
         
-        public JobWebServiceSoapClient() {
+        public HospitalWebServiceSoapClient() {
         }
         
-        public JobWebServiceSoapClient(string endpointConfigurationName) : 
+        public HospitalWebServiceSoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public JobWebServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public HospitalWebServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public JobWebServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public HospitalWebServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public JobWebServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public HospitalWebServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public Job.InServices.ProxyToJobWebService.MusicType[] GetOurCatalogue() {
+        public Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetOurCatalogue() {
             return base.Channel.GetOurCatalogue();
         }
         
-        public System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.MusicType[]> GetOurCatalogueAsync() {
+        public System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.MusicType[]> GetOurCatalogueAsync() {
             return base.Channel.GetOurCatalogueAsync();
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse Job.InServices.ProxyToJobWebService.JobWebServiceSoap.GetOurCatalogueByAuthenticating(Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest request) {
+        Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap.GetOurCatalogueByAuthenticating(Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest request) {
             return base.Channel.GetOurCatalogueByAuthenticating(request);
         }
         
-        public Job.InServices.ProxyToJobWebService.MusicType[] GetOurCatalogueByAuthenticating(Job.InServices.ProxyToJobWebService.HeaderLogin HeaderLogin) {
-            Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest inValue = new Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest();
+        public Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetOurCatalogueByAuthenticating(Hospital.InServices.ProxyToHospitalWebService.HeaderLogin HeaderLogin) {
+            Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest inValue = new Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest();
             inValue.HeaderLogin = HeaderLogin;
-            Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse retVal = ((Job.InServices.ProxyToJobWebService.JobWebServiceSoap)(this)).GetOurCatalogueByAuthenticating(inValue);
+            Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse retVal = ((Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap)(this)).GetOurCatalogueByAuthenticating(inValue);
             return retVal.GetOurCatalogueByAuthenticatingResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse> Job.InServices.ProxyToJobWebService.JobWebServiceSoap.GetOurCatalogueByAuthenticatingAsync(Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest request) {
+        System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse> Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap.GetOurCatalogueByAuthenticatingAsync(Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest request) {
             return base.Channel.GetOurCatalogueByAuthenticatingAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingResponse> GetOurCatalogueByAuthenticatingAsync(Job.InServices.ProxyToJobWebService.HeaderLogin HeaderLogin) {
-            Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest inValue = new Job.InServices.ProxyToJobWebService.GetOurCatalogueByAuthenticatingRequest();
+        public System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingResponse> GetOurCatalogueByAuthenticatingAsync(Hospital.InServices.ProxyToHospitalWebService.HeaderLogin HeaderLogin) {
+            Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest inValue = new Hospital.InServices.ProxyToHospitalWebService.GetOurCatalogueByAuthenticatingRequest();
             inValue.HeaderLogin = HeaderLogin;
-            return ((Job.InServices.ProxyToJobWebService.JobWebServiceSoap)(this)).GetOurCatalogueByAuthenticatingAsync(inValue);
+            return ((Hospital.InServices.ProxyToHospitalWebService.HospitalWebServiceSoap)(this)).GetOurCatalogueByAuthenticatingAsync(inValue);
         }
         
-        public Job.InServices.ProxyToJobWebService.MusicType[] GetCatalogue() {
+        public Hospital.InServices.ProxyToHospitalWebService.MusicType[] GetCatalogue() {
             return base.Channel.GetCatalogue();
         }
         
-        public System.Threading.Tasks.Task<Job.InServices.ProxyToJobWebService.MusicType[]> GetCatalogueAsync() {
+        public System.Threading.Tasks.Task<Hospital.InServices.ProxyToHospitalWebService.MusicType[]> GetCatalogueAsync() {
             return base.Channel.GetCatalogueAsync();
         }
     }

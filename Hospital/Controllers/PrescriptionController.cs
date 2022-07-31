@@ -1,5 +1,5 @@
-﻿using Job.Services.IService;
-using Job.Services.Service;
+﻿using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Job.Controllers
+namespace Hospital.Controllers
 {
     public class PrescriptionController : Controller
     {

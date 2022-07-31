@@ -100,8 +100,8 @@
     <Compile Include="PPrescriptionListDto.cs" />
     <Compile Include="PrescribeDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\JobContext.cs" />
-    <Compile Include="Repository\JobInitialiser.cs" />
+    <Compile Include="Repository\HospitalContext.cs" />
+    <Compile Include="Repository\HospitalInitialiser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

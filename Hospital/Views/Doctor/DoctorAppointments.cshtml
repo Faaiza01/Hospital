@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Job.Data.DAppointmentHistory>
+﻿@model IEnumerable<Hospital.Data.DAppointmentHistory>
 
 <!DOCTYPE html>
 <html>
@@ -121,14 +121,14 @@
     @foreach (var item in Model)
     {
     <li class="table-row list">
-        <div class="col col-2" data-label="Job Id">@item.PatientName</div>
+        <div class="col col-2" data-label="Hospital Id">@item.PatientName</div>
 
         <div class="col col-2" data-label="Payment Status">@item.Gender</div>
         <div class="col col-2" data-label="Amount">@item.Email</div>
         <div class="col col-2" data-label="Customer Name">@item.ContactNumber</div>
         <div class="col col-2" data-label="Customer Name">@item.AppointmentDate</div>
         <div class="col col-2" data-label="Customer Name">@item.AppointmentTime</div>
-        <div class="col col-2" data-label="Job Id"> @item.Status</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.Status</div>
 
 
         @if (@item.IsCancelledByDoctor == false && item.IsCancelledByPatient == false)
@@ -155,17 +155,26 @@
         Cancelled By Doctor
     </div>}
 
-        <div class="col col-2" data-label="Amount">
-            <div class="button">
-                <a href="#" class="btntext alink" target="_blank">
-                    @Html.ActionLink("Prescribe", "Prescribe", new
-                    {
-                        id = item.AppointmentId
-                    })
-                </a>
-            </div>
+        @if (@item.Status == "Active")
+        {
+    <div class="col col-2" data-label="Amount">
+        <div class="button">
+            <a href="#" class="btntext alink" target="_blank">
+                @Html.ActionLink("Prescribe", "Prescribe", new
+                {
+                    id = item.AppointmentId
+                })
+            </a>
         </div>
-
+    </div>}
+        @if (@item.Status == "Closed")
+        {
+    <div class="col col-2" data-label="Amount">
+            <a>
+               __
+            </a>
+       
+    </div>}
     </li>}
 
 

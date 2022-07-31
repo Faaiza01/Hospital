@@ -1,14 +1,14 @@
-﻿using Job.Data;
-using Job.Data.DAO;
-using Job.Data.IDAO;
-using Job.Data.Models.Domain;
-using Job.Data.Repository;
-using Job.Services.IService;
-using Job.Services.Models;
+﻿using Hospital.Data;
+using Hospital.Data.DAO;
+using Hospital.Data.IDAO;
+using Hospital.Data.Models.Domain;
+using Hospital.Data.Repository;
+using Hospital.Services.IService;
+using Hospital.Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Job.Services.Service
+namespace Hospital.Services.Service
 {
     public class UserService : IUserService
     {
@@ -21,14 +21,14 @@ namespace Job.Services.Service
 
         public IList<Users> GetUsers()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetUsers(context);
             }
         }
         public IList<Users> GetRegistered()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetRegistered(context);
             }
@@ -36,7 +36,7 @@ namespace Job.Services.Service
 
         public IList<Users> GetListOfDoctors()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetListOfDoctors(context);
             }
@@ -44,7 +44,7 @@ namespace Job.Services.Service
 
         public Users GetDoctorData(int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetDoctorsData(context,userId);
             }
@@ -52,7 +52,7 @@ namespace Job.Services.Service
 
         public void EditDoctor(Users users, int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 Users doctor = new Users();
                 doctor.FirstName = users.FirstName;
@@ -62,14 +62,14 @@ namespace Job.Services.Service
                 doctor.Specialization = users.Specialization;
                 doctor.ConsultancyFee = users.ConsultancyFee;
 
-                UserDAO.EditDoctor(context, doctor, userId);//Update existing job         
+                UserDAO.EditDoctor(context, doctor, userId);//Update existing Hospital         
                 context.SaveChanges();
             }
         }
 
         public void DeleteDoctor(int id)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 UserDAO.DeleteDoctor(context, id);
             }
@@ -78,14 +78,14 @@ namespace Job.Services.Service
 
         public IList<DAppointmentHistory> GetDoctorAppointmentHistory(int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetDoctorAppointmentHistory(context, userId);
             }
         }
         public void CancelAppointmentByDoctor(int appointmentId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 UserDAO.CancelAppointmentByDoctor(context, appointmentId);
             }
@@ -94,7 +94,7 @@ namespace Job.Services.Service
         public void Prescribe( PrescribeDto prescribeDto, int id)
         {
 
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 UserDAO.Prescribe(context, prescribeDto, id);//Add user
                 context.SaveChanges();
@@ -103,7 +103,7 @@ namespace Job.Services.Service
 
         public IList<DPrescriptionListDto> GetPrescriptionList(int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetPrescriptionList(context, userId);
             }
@@ -111,7 +111,7 @@ namespace Job.Services.Service
 
         public IList<PPrescriptionListDto> GetPatientPrescriptionList(int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetPatientPrescriptionList(context, userId);
             }
@@ -119,7 +119,7 @@ namespace Job.Services.Service
 
         public IList<AllPrescriptionListDto> GetAllPrescriptionList()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetAllPrescriptionList(context);
             }
@@ -128,7 +128,7 @@ namespace Job.Services.Service
         public void AddUser(Users Users)
         {
 
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 UserDAO.AddUser(context, Users);//Add user
                 context.SaveChanges();
@@ -137,7 +137,7 @@ namespace Job.Services.Service
 
         public void RemovePatient(string id)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 UserDAO.RemovePatient(context, id);
             }
@@ -145,7 +145,7 @@ namespace Job.Services.Service
 
         public Users GetUserData(string id)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetUserData(context, id);
             }
@@ -154,7 +154,7 @@ namespace Job.Services.Service
 
         public Users GetLoggedInUserData(string IdentityId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
                 return UserDAO.GetLoggedInUserData(context, IdentityId);
             }

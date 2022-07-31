@@ -1,5 +1,5 @@
-﻿using Job.Data.Models.Domain;
-using Job.Data.Repository;
+﻿using Hospital.Data.Models.Domain;
+using Hospital.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 
 
-namespace Job.Data.IDAO
+namespace Hospital.Data.IDAO
 {
-    public interface IJobDAO
+    public interface IHospitalDAO
     {
-        List<Users> GetDoctorByDepartment(JobContext context);
-        List<Users> GetDoctorByDepartment(JobContext context, string department);
-        decimal GetDoctorsFee(JobContext context, string userId);
-        void BookAppointment(JobContext context, Appointment appointment);
-        List<PAppointmentHistoryDto> GetPatientAppointmentHistory(JobContext context, int userId);
-        void CancelAppointment(JobContext context, int appointmentId);
-        List<AppointmentDetailsDto> AppointmentDetail(JobContext context);
+        List<Users> GetDoctorByDepartment(HospitalContext context);
+        List<Users> GetDoctorByDepartment(HospitalContext context, string department);
+        decimal GetDoctorsFee(HospitalContext context, string userId);
+        void BookAppointment(HospitalContext context, Appointment appointment);
+        List<PAppointmentHistoryDto> GetPatientAppointmentHistory(HospitalContext context, int userId);
+        void CancelAppointment(HospitalContext context, int appointmentId);
+        List<AppointmentDetailsDto> AppointmentDetail(HospitalContext context);
 
     }
 }

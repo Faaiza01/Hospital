@@ -1,8 +1,8 @@
-﻿using Job.Data;
-using Job.Data.Models.Domain;
-using Job.Models;
-using Job.Services.IService;
-using Job.Services.Service;
+﻿using Hospital.Data;
+using Hospital.Data.Models.Domain;
+using Hospital.Models;
+using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -51,7 +51,7 @@ namespace Forest.Controllers
             return View(ViewBag.doctors);
         }
 
-        //GET: EditJob/Edit
+        //GET: EditHospital/Edit
         public ActionResult EditDoctor(int id)
         {
             Users doctors = UserService.GetDoctorData(id);
@@ -72,14 +72,14 @@ namespace Forest.Controllers
             }
         }
 
-        //// GET: DeleteJob/Delete/5
+        //// GET: DeleteHospital/Delete/5
         public ActionResult DeleteDoctor(int id)
         {
             Users doctor =  UserService.GetDoctorData(id);
             return View(doctor);
         }
 
-        //// POST: DeleteJob/Delete/5
+        //// POST: DeleteHospital/Delete/5
         [HttpPost]
         public ActionResult DeleteDoctor(int id, Users doctor)
         {
@@ -120,7 +120,7 @@ namespace Forest.Controllers
             try
             {
                 UserService.Prescribe(prescribeDto, id);
-                return RedirectToAction("ViewDoctors", "Doctor");
+                return RedirectToAction("Index", "Prescription");
             }
             catch
             {

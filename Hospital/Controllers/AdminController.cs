@@ -1,6 +1,6 @@
-using Job;
-using Job.Services.IService;
-using Job.Services.Service;
+using Hospital;
+using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace JobWebApi.Controllers
+namespace HospitalWebApi.Controllers
 {
     public class AdminController : Controller
     {

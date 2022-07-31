@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Job.Services.Models
+namespace Hospital.Services.Models
 {
-    public class PostJobDto
+    public class PostHospitalDto
     {
-        public string JobTitle { get; set; }
-        public string JobDescription { get; set; }
-        public string JobCategory { get; set; }
+        public string HospitalTitle { get; set; }
+        public string HospitalDescription { get; set; }
+        public string HospitalCategory { get; set; }
         public string Salary { get; set; }
         public string CompanyName { get; set; }
         public string ComapanyEmail { get; set; }

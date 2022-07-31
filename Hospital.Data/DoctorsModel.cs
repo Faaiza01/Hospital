@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Job.Data
+namespace Hospital.Data
 {
     public class DoctorsModel
     {

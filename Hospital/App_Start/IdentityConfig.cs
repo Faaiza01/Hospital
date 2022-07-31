@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Job.Models;
+using Hospital.Models;
 
-namespace Job
+namespace Hospital
 {
     public class EmailService : IIdentityMessageService
     {

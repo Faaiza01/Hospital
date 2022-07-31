@@ -8,13 +8,13 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Job.Models;
-using Job.Services.IService;
-using Job.Services.Service;
-using Job.Data.Models.Domain;
+using Hospital.Models;
+using Hospital.Services.IService;
+using Hospital.Services.Service;
+using Hospital.Data.Models.Domain;
 using Forest.Controllers;
 
-namespace Job.Controllers
+namespace Hospital.Controllers
 {
     [Authorize]
     public class AccountController : DoctorController

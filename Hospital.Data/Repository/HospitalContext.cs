@@ -4,15 +4,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Job.Data.Models.Domain;
+using Hospital.Data.Models.Domain;
 
-namespace Job.Data.Repository
+namespace Hospital.Data.Repository
 {
-    public class JobContext: DbContext
+    public class HospitalContext: DbContext
     {
-        public JobContext() : base("JobContext")
+        public HospitalContext() : base("HospitalContext")
         {
-            Database.SetInitializer(new JobInitialiser());
+            Database.SetInitializer(new HospitalInitialiser());
         }
         public DbSet<Users> Users { get; set; }
         public DbSet<Appointment> Appointment { get; set; }

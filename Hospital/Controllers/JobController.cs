@@ -1,5 +1,5 @@
-﻿using Job.Services.IService;
-using Job.Services.Service;
+﻿using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -7,17 +7,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Job.Controllers
+namespace Hospital.Controllers
 {
-    public abstract class JobController : Controller
+    public abstract class HospitalController : Controller
     {
        public IUserService UserService;
-        public IJobService JobService;
+        public IHospitalService HospitalService;
 
-        protected JobController()
+        protected HospitalController()
         {
             UserService = new UserService();
-            JobService = new JobService();
+            HospitalService = new HospitalService();
 
         }
     }

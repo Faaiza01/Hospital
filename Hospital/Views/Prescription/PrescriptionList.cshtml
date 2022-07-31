@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Job.Data.AllPrescriptionListDto>
+﻿@model IEnumerable<Hospital.Data.AllPrescriptionListDto>
 
 <!DOCTYPE html>
 <html>
@@ -119,16 +119,16 @@
     @foreach (var item in Model)
     {
     <li class="table-row list">
-        <div class="col col-2" data-label="Job Id">@item.PatientName</div>
+        <div class="col col-2" data-label="Hospital Id">@item.PatientName</div>
 
         <div class="col col-2" data-label="Customer Name">@item.AppointmentDate</div>
         <div class="col col-2" data-label="Customer Name">@item.AppointmentTime</div>
-        <div class="col col-2" data-label="Job Id">@item.DoctorName</div>
+        <div class="col col-2" data-label="Hospital Id">@item.DoctorName</div>
 
-        <div class="col col-2" data-label="Job Id"> @item.Symptoms</div>
-        <div class="col col-2" data-label="Job Id"> @item.Diseases</div>
-        <div class="col col-2" data-label="Job Id"> @item.Allergies</div>
-        <div class="col col-2" data-label="Job Id"> @item.Prescriptions</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.Symptoms</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.Diseases</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.Allergies</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.Prescriptions</div>
     </li>
 }
 

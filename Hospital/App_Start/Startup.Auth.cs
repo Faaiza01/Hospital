@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Job.Models;
+using Hospital.Models;
 
-namespace Job
+namespace Hospital
 {
     public partial class Startup
     {

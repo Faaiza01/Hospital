@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Job.Data.Models.Domain
+namespace Hospital.Data.Models.Domain
 {
     public class Prescription
     {

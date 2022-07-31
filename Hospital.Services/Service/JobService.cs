@@ -1,46 +1,46 @@
-﻿using Job.Data;
-using Job.Data.DAO;
-using Job.Data.IDAO;
-using Job.Data.Models.Domain;
-using Job.Data.Repository;
-using Job.Services.IService;
-using Job.Services.Models;
+﻿using Hospital.Data;
+using Hospital.Data.DAO;
+using Hospital.Data.IDAO;
+using Hospital.Data.Models.Domain;
+using Hospital.Data.Repository;
+using Hospital.Services.IService;
+using Hospital.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Job.Services.Service
+namespace Hospital.Services.Service
 {
-    public class JobService : IJobService
+    public class HospitalService : IHospitalService
     {
-        private IJobDAO JobDAO;
+        private IHospitalDAO HospitalDAO;
   
-        public JobService()
+        public HospitalService()
         {
-            JobDAO = new JobDAO();
+            HospitalDAO = new HospitalDAO();
         }
 
         public List<Users> GetDoctorByDepartment()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-               return JobDAO.GetDoctorByDepartment(context);
+               return HospitalDAO.GetDoctorByDepartment(context);
             }
         }
 
         public List<Users> GetDoctorByDepartment(string department)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                return JobDAO.GetDoctorByDepartment(context, department);
+                return HospitalDAO.GetDoctorByDepartment(context, department);
             }
         }
 
         public decimal GetDoctorsFee(string userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                return JobDAO.GetDoctorsFee(context, userId);
+                return HospitalDAO.GetDoctorsFee(context, userId);
             }
         }
 
@@ -54,34 +54,34 @@ namespace Job.Services.Service
                 Status = true
             };
 
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                JobDAO.BookAppointment(context, appointment);//Add job
+                HospitalDAO.BookAppointment(context, appointment);//Add Hospital
                 context.SaveChanges();
             }
         }
 
         public IList<PAppointmentHistoryDto> GetPatientAppointmentHistory(int userId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                return JobDAO.GetPatientAppointmentHistory(context, userId);
+                return HospitalDAO.GetPatientAppointmentHistory(context, userId);
             }
         }
 
         public void CancelAppointment(int appointmentId)
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                JobDAO.CancelAppointment(context, appointmentId);
+                HospitalDAO.CancelAppointment(context, appointmentId);
             }
         }
 
         public IList<AppointmentDetailsDto> AppointmentDetail()
         {
-            using (var context = new JobContext())
+            using (var context = new HospitalContext())
             {
-                return JobDAO.AppointmentDetail(context);
+                return HospitalDAO.AppointmentDetail(context);
             }
         }
    

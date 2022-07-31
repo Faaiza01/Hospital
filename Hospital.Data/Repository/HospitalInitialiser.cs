@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Job.Data.Models.Domain;
-using Job.Data.DAO;
-using Job.Data.IDAO;
+using Hospital.Data.Models.Domain;
+using Hospital.Data.DAO;
+using Hospital.Data.IDAO;
 
-namespace Job.Data.Repository
+namespace Hospital.Data.Repository
 {
-    public class JobInitialiser :
-        System.Data.Entity.DropCreateDatabaseIfModelChanges<JobContext>
+    public class HospitalInitialiser :
+        System.Data.Entity.DropCreateDatabaseIfModelChanges<HospitalContext>
     {
-        protected override void Seed(JobContext context)
+        protected override void Seed(HospitalContext context)
         {
             //Employer employer1 = new Employer()
             //{ 
-            //    JobTitle = "Software Engineer", 
-            //    JobDescription = "Full Stack Developer",
-            //    JobCategory = "Permanent",
+            //    HospitalTitle = "Software Engineer", 
+            //    HospitalDescription = "Full Stack Developer",
+            //    HospitalCategory = "Permanent",
             //    Salary = "50000",
             //    CompanyName = "Telenor",
             //    ComapanyEmail = "mo@mo.com",

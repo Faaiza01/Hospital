@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Job.Startup))]
-namespace Job
+[assembly: OwinStartupAttribute(typeof(Hospital.Startup))]
+namespace Hospital
 {
     public partial class Startup
     {

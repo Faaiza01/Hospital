@@ -1,6 +1,6 @@
-﻿using Job.Data;
-using Job.Data.Models.Domain;
-using Job.Services.Models;
+﻿using Hospital.Data;
+using Hospital.Data.Models.Domain;
+using Hospital.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace Job.Services.IService
+namespace Hospital.Services.IService
 {
-    public interface IJobService
+    public interface IHospitalService
     {
         List<Users> GetDoctorByDepartment();
         List<Users> GetDoctorByDepartment(string department);

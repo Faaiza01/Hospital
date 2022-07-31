@@ -1,4 +1,4 @@
-@model IEnumerable<Job.Data.Models.Domain.Users>
+@model IEnumerable<Hospital.Data.Models.Domain.Users>
 
 @{
     ViewBag.Title = "All Users";
@@ -127,7 +127,7 @@
     @foreach (var item in Model)
     {
         <li class="table-row list">
-            <div class="col col-2" data-label="Job Id"> @item.FirstName</div>
+            <div class="col col-2" data-label="Hospital Id"> @item.FirstName</div>
 
             <div class="col col-2" data-label="Payment Status">@item.LastName </div>
             <div class="col col-2" data-label="Amount">@item.Email</div>

@@ -1,8 +1,8 @@
-﻿using Job.Data.Models.Domain;
-using Job.Models;
-using Job.Services.IService;
-using Job.Services.Models;
-using Job.Services.Service;
+﻿using Hospital.Data.Models.Domain;
+using Hospital.Models;
+using Hospital.Services.IService;
+using Hospital.Services.Models;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -12,18 +12,18 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Job.Controllers
+namespace Hospital.Controllers
 {
     public class HomeController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private IJobService JobService;
+        private IHospitalService HospitalService;
         public IUserService UserService;
 
         public HomeController()
         {
-            JobService = new JobService();
+            HospitalService = new HospitalService();
             UserService = new UserService();
         }
 

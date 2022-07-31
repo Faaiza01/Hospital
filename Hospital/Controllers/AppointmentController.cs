@@ -1,5 +1,5 @@
-﻿using Job.Services.IService;
-using Job.Services.Service;
+﻿using Hospital.Services.IService;
+using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ namespace Forest.Controllers
 {
     public class AppointmentController : Controller
     {
-        public IJobService JobService;
+        public IHospitalService HospitalService;
         public IUserService UserService;
 
 
         public AppointmentController()
         {
-            JobService = new JobService();
+            HospitalService = new HospitalService();
             UserService = new UserService();
 
         }
@@ -28,19 +28,19 @@ namespace Forest.Controllers
             var identityId = User.Identity.GetUserId();
 
             var user = UserService.GetUserData(identityId);
-            ViewBag.appointments = JobService.GetPatientAppointmentHistory(user.UserId);
+            ViewBag.appointments = HospitalService.GetPatientAppointmentHistory(user.UserId);
             return View(ViewBag.appointments);
         }
 
         public ActionResult CancelAppointment(int appointmentId)
         {
-            JobService.CancelAppointment(appointmentId);
+            HospitalService.CancelAppointment(appointmentId);
             return RedirectToAction("Index");
         }
 
         public ActionResult AppointmentDetail()
         {
-            ViewBag.appointmentsDetails = JobService.AppointmentDetail();
+            ViewBag.appointmentsDetails = HospitalService.AppointmentDetail();
             return View(ViewBag.appointmentsDetails);
         }
 
