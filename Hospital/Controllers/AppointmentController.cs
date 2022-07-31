@@ -38,5 +38,11 @@ namespace Forest.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AppointmentDetail()
+        {
+            ViewBag.appointmentsDetails = JobService.AppointmentDetail();
+            return View(ViewBag.appointmentsDetails);
+        }
+
     }
 }

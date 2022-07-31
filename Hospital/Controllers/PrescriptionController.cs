@@ -27,6 +27,13 @@ namespace Job.Controllers
             return View(ViewBag.perscriptions);
         }
 
+        public ActionResult PrescriptionList()
+        {
+            ViewBag.allPrescription = UserService.GetAllPrescriptionList();
+            return View(ViewBag.allPrescription);
+
+        }
+
 
     }
 }

@@ -11,7 +11,7 @@ namespace Job.Data.IDAO
 {
     public interface IUserDAO
     {
-        IList<Users> GetUsers(JobContext context);
+        IList<Users> GetRegistered(JobContext context);
         IList<Users> GetListOfDoctors(JobContext context);
         Users GetDoctorsData(JobContext context, int userId);
         void EditDoctor(JobContext context, Users doctor, int userId);
@@ -20,8 +20,10 @@ namespace Job.Data.IDAO
         void CancelAppointmentByDoctor(JobContext context, int appointmentId);
         void Prescribe(JobContext context, PrescribeDto prescribeDto, int id);
         List<DPrescriptionListDto> GetPrescriptionList(JobContext context, int userId);
+        List<PPrescriptionListDto> GetPatientPrescriptionList(JobContext context, int userId);
+        List<AllPrescriptionListDto> GetAllPrescriptionList(JobContext context);
         void AddUser(JobContext context, Users Users);
-        void RemoveUser(JobContext context, string identityId);
+        void RemovePatient(JobContext context, string identityId);
         Users GetUserData(JobContext context, string id);
         Users GetLoggedInUserData(JobContext context, string IdentityId);
         void EditProfile(JobContext context, Users employer, string userId);

@@ -337,6 +337,9 @@
     <Content Include="Views\Doctor\DoctorAppointments.cshtml" />
     <Content Include="Views\Doctor\Prescribe.cshtml" />
     <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\Patient\PrescriptionList.cshtml" />
+    <Content Include="Views\Appointment\AppointmentDetail.cshtml" />
+    <Content Include="Views\Prescription\PrescriptionList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

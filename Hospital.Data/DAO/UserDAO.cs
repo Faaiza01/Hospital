@@ -13,9 +13,9 @@ namespace Job.Data.DAO
 {
     public class UserDAO : IUserDAO
     {
-        public IList<Users> GetUsers(JobContext context)
+        public IList<Users> GetRegistered(JobContext context)
         {
-            return context.Users.ToList();
+            return context.Users.Where(x => x.Role == "Patient").ToList();
         }
 
         public IList<Users> GetListOfDoctors(JobContext context)
@@ -109,14 +109,57 @@ namespace Job.Data.DAO
             return dPrescriptionListDtos;
         }
 
+        public List<PPrescriptionListDto> GetPatientPrescriptionList(JobContext context, int userId)
+        {
+            List<PPrescriptionListDto> pPrescriptionListDtos = new List<PPrescriptionListDto>();
+            var myAppointment = context.Appointment.Where(x => x.PatientId == userId).ToList();
+            foreach (var item in myAppointment)
+            {
+                PPrescriptionListDto pPrescriptionListDto = new PPrescriptionListDto();
+                var myDoctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
+                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                pPrescriptionListDto.DoctorsName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
+                pPrescriptionListDto.Fee = myDoctor.ConsultancyFee;
+                pPrescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                pPrescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                pPrescriptionListDto.Symptoms = prescriptions.Symptoms;
+                pPrescriptionListDto.Diseases = prescriptions.Diseases;
+                pPrescriptionListDto.Allergies = prescriptions.Allergies;
+                pPrescriptionListDto.Prescriptions = prescriptions.Prescriptions;
+                pPrescriptionListDtos.Add(pPrescriptionListDto);
+            }
+            return pPrescriptionListDtos;
+        }
 
+        public List<AllPrescriptionListDto> GetAllPrescriptionList(JobContext context)
+        {
+            List<AllPrescriptionListDto> allPrescriptionListDtos = new List<AllPrescriptionListDto>();
+            var appointments = context.Appointment.ToList();
+            foreach (var item in appointments)
+            {
+                AllPrescriptionListDto prescriptionListDto = new AllPrescriptionListDto();
+                var patient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
+                var doctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
+                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                prescriptionListDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
+                prescriptionListDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
+                prescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                prescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                prescriptionListDto.Symptoms = prescriptions.Symptoms;
+                prescriptionListDto.Diseases = prescriptions.Diseases;
+                prescriptionListDto.Allergies = prescriptions.Allergies;
+                prescriptionListDto.Prescriptions = prescriptions.Prescriptions;
+                allPrescriptionListDtos.Add(prescriptionListDto);
+            }
+            return allPrescriptionListDtos;
+        }
         public void AddUser(JobContext context, Users Users)
         {
             context.Users.Add(Users);
             context.SaveChanges();
         }
 
-        public void RemoveUser(JobContext context, string identityId)
+        public void RemovePatient(JobContext context, string identityId)
         {
             context.Users.Remove(context.Users.Where(c => c.IdentityId == identityId).FirstOrDefault());
             context.SaveChanges();

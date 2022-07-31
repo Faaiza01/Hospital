@@ -69,6 +69,29 @@ namespace Job.Data.DAO
             context.SaveChanges();
         }
 
+        public List<AppointmentDetailsDto> AppointmentDetail(JobContext context)
+        {
+            List<AppointmentDetailsDto> appointmentDetailsDtos = new List<AppointmentDetailsDto>();
+            var appointments = context.Appointment.ToList();
+            foreach (var item in appointments)
+            {
+                AppointmentDetailsDto appointmentDetailsDto = new AppointmentDetailsDto();
+
+                var doctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
+                var patient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
+
+                appointmentDetailsDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
+                appointmentDetailsDto.ConsultancyFee = doctor?.ConsultancyFee;
+                appointmentDetailsDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
+                appointmentDetailsDto.Gender = patient?.Gender;
+                appointmentDetailsDto.ContactNumber = patient?.ContactNumber;
+                appointmentDetailsDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                appointmentDetailsDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                appointmentDetailsDto.Status = item?.Status == true ? "Active" : "Closed";
+                appointmentDetailsDtos.Add(appointmentDetailsDto);
+            }
+            return appointmentDetailsDtos;
+        }
 
         public Employer GetJob(JobContext context, int id)
         {

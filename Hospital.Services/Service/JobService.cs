@@ -77,6 +77,13 @@ namespace Job.Services.Service
             }
         }
 
+        public IList<AppointmentDetailsDto> AppointmentDetail()
+        {
+            using (var context = new JobContext())
+            {
+                return JobDAO.AppointmentDetail(context);
+            }
+        }
         public Employer GetJob(int id)
         {
             using (var context = new JobContext())

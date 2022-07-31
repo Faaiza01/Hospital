@@ -18,6 +18,7 @@ namespace Job.Services.IService
         void BookAppointment(BookAppointmentDto bookAppointmentDto, int userId);
         IList<PAppointmentHistoryDto> GetPatientAppointmentHistory(int userId);
         void CancelAppointment(int appointmentId);
+        IList<AppointmentDetailsDto> AppointmentDetail();
         Employer GetJob(int id);
         IList<Employer> GetJobs();
         void AddJob(PostJobDto postJobDto, string userId);

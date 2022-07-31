@@ -54,7 +54,7 @@ namespace JobWebApi.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Admin";
-            ViewBag.users = UserService.GetUsers();
+            ViewBag.users = UserService.GetRegistered();
             return View(ViewBag.users);
         }
 
@@ -66,7 +66,7 @@ namespace JobWebApi.Controllers
                 return View("Error");
             }
             var result = await UserManager.DeleteAsync(user);
-            UserService.RemoveUser(id);
+            UserService.RemovePatient(id);
             return RedirectToAction("Index", "Admin");
         }
     }

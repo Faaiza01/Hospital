@@ -11,7 +11,7 @@ namespace Job.Services.IService
 {
     public interface IUserService
     {
-        IList<Users> GetUsers();
+        IList<Users> GetRegistered();
         IList<Users> GetListOfDoctors();
         Users GetDoctorData(int userId);
         void EditDoctor(Users users, int userId);
@@ -20,8 +20,10 @@ namespace Job.Services.IService
         void CancelAppointmentByDoctor(int appointmentId);
         void Prescribe(PrescribeDto prescribeDto, int id);
         IList<DPrescriptionListDto> GetPrescriptionList(int userId);
+        IList<PPrescriptionListDto> GetPatientPrescriptionList(int userId);
+        IList<AllPrescriptionListDto> GetAllPrescriptionList();
         void AddUser(Users Users);
-        void RemoveUser(string id);
+        void RemovePatient(string id);
         Users GetUserData(string id);
         Users GetLoggedInUserData(string IdentityId);
         void EditProfile(EditProfileDto editProfileDto, string userId);

@@ -19,11 +19,11 @@ namespace Job.Services.Service
             UserDAO = new UserDAO();
         }
 
-        public IList<Users> GetUsers()
+        public IList<Users> GetRegistered()
         {
             using (var context = new JobContext())
             {
-                return UserDAO.GetUsers(context);
+                return UserDAO.GetRegistered(context);
             }
         }
 
@@ -102,6 +102,22 @@ namespace Job.Services.Service
             }
         }
 
+        public IList<PPrescriptionListDto> GetPatientPrescriptionList(int userId)
+        {
+            using (var context = new JobContext())
+            {
+                return UserDAO.GetPatientPrescriptionList(context, userId);
+            }
+        }
+
+        public IList<AllPrescriptionListDto> GetAllPrescriptionList()
+        {
+            using (var context = new JobContext())
+            {
+                return UserDAO.GetAllPrescriptionList(context);
+            }
+        }
+
         public void AddUser(Users Users)
         {
 
@@ -112,11 +128,11 @@ namespace Job.Services.Service
             }
         }
 
-        public void RemoveUser(string id)
+        public void RemovePatient(string id)
         {
             using (var context = new JobContext())
             {
-                UserDAO.RemoveUser(context, id);
+                UserDAO.RemovePatient(context, id);
             }
         }
 
