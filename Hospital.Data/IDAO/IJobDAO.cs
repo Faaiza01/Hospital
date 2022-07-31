@@ -19,16 +19,6 @@ namespace Job.Data.IDAO
         List<PAppointmentHistoryDto> GetPatientAppointmentHistory(JobContext context, int userId);
         void CancelAppointment(JobContext context, int appointmentId);
         List<AppointmentDetailsDto> AppointmentDetail(JobContext context);
-        Employer GetJob(JobContext context, int id);
-        IList<Employer> GetJobs(JobContext context);
-        void AddJob(JobContext context, Employer employer);
-        void EditJob(JobContext context, Employer employer, int jobId);
-        void DeleteJob(JobContext context, int id);
-        void ApplyJob(JobContext context, AppliedJobs appliedJobs);
-        List<AppliedJobsList> GetAppliedJobs(JobContext context, string UserId);
-        List<ListOfApplicantsDto> GetListOfApplicants(JobContext context);
-        void SaveJob(JobContext context, SavedJobs savedJobs);
-        List<AppliedJobsList> SearchByJobTitle(JobContext context, string text, string UserId);
 
     }
 }

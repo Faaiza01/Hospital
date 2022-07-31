@@ -11,6 +11,7 @@ namespace Job.Services.IService
 {
     public interface IUserService
     {
+        IList<Users> GetUsers();
         IList<Users> GetRegistered();
         IList<Users> GetListOfDoctors();
         Users GetDoctorData(int userId);
@@ -26,9 +27,6 @@ namespace Job.Services.IService
         void RemovePatient(string id);
         Users GetUserData(string id);
         Users GetLoggedInUserData(string IdentityId);
-        void EditProfile(EditProfileDto editProfileDto, string userId);
-        string GetResumePath(string identityId);
-        IList<AppliedJobsList> GetUserAppliedJobs(string UserId);
-        IList<SavedJobList> GetUserSavedJobs(string UserId);
+    
     }
 }

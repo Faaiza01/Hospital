@@ -19,7 +19,6 @@ namespace Job.Controllers
             UserService = new UserService();
             JobService = new JobService();
 
-            ViewBag.genres = JobService.GetJobs();        
         }
     }
 }

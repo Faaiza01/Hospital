@@ -19,17 +19,6 @@ namespace Job.Services.IService
         IList<PAppointmentHistoryDto> GetPatientAppointmentHistory(int userId);
         void CancelAppointment(int appointmentId);
         IList<AppointmentDetailsDto> AppointmentDetail();
-        Employer GetJob(int id);
-        IList<Employer> GetJobs();
-        void AddJob(PostJobDto postJobDto, string userId);
-        void EditJob(PostJobDto postJobDto, string userId, int id);
-        void DeleteJob(int id);
-        void ApplyJob(AppliedJobs appliedJobs);
-        IList<AppliedJobsList> GetAppliedJobs(string UserId);
-        IList<ListOfApplicantsDto> GetListOfApplicants();
-        void SaveJob(SavedJobs savedJobs);
-        IList<AppliedJobsList> SearchByJobTitle(string text, string userId);
-
 
     }
 }

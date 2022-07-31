@@ -19,6 +19,13 @@ namespace Job.Services.Service
             UserDAO = new UserDAO();
         }
 
+        public IList<Users> GetUsers()
+        {
+            using (var context = new JobContext())
+            {
+                return UserDAO.GetUsers(context);
+            }
+        }
         public IList<Users> GetRegistered()
         {
             using (var context = new JobContext())
@@ -152,47 +159,6 @@ namespace Job.Services.Service
                 return UserDAO.GetLoggedInUserData(context, IdentityId);
             }
         }
-
-
-        public void EditProfile(EditProfileDto editProfileDto, string userId)
-        {
-            using (var context = new JobContext())
-            {
-                Users Users = new Users();
-                Users.FirstName = editProfileDto.FirstName;
-                Users.LastName = editProfileDto.LastName;
-                UserDAO.EditProfile(context, Users, userId);//Update existing user profile
-                context.SaveChanges();
-            }
-        }
-
-        public string GetResumePath(string identityId)
-        {
-            using (var context = new JobContext())
-            {
-                return UserDAO.GetResumePath(context, identityId);
-            }
-        }
-   
-        public IList<AppliedJobsList> GetUserAppliedJobs(string UserId)
-        {
-            using (var context = new JobContext())
-            {
-                return UserDAO.GetUserAppliedJobs(context, UserId);
-            }
-        }
-
-        public IList<SavedJobList> GetUserSavedJobs(string UserId)
-        {
-            using (var context = new JobContext())
-            {
-                return UserDAO.GetUserSavedJobs(context, UserId);
-            }
-        }
-   
-
-
-  
 
 
     }

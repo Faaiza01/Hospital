@@ -106,6 +106,7 @@ namespace Job.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+         
             return View();
         }
 
@@ -143,6 +144,7 @@ namespace Job.Controllers
             return View(model);
         }
 
+      
         private void RegisterPatient(RegisterViewModel model, ApplicationUser user)
         {
             Users Users = new Users

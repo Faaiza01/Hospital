@@ -13,6 +13,10 @@ namespace Job.Data.DAO
 {
     public class UserDAO : IUserDAO
     {
+        public IList<Users> GetUsers(JobContext context)
+        {
+            return context.Users.ToList();
+        }
         public IList<Users> GetRegistered(JobContext context)
         {
             return context.Users.Where(x => x.Role == "Patient").ToList();
@@ -176,68 +180,8 @@ namespace Job.Data.DAO
         }
 
 
-        public void EditProfile(JobContext context, Users employer, string userId)
-        {
-            var Id = context.Users.Where(x => x.IdentityId == userId).Select(d => d.UserId).FirstOrDefault();
-            context.Users.Find(Id).FirstName = employer.FirstName;
-            context.Users.Find(Id).LastName = employer.LastName;
-        }
+    
 
-        public string GetResumePath(JobContext context, string IdentityId)
-        {
-            return "";
-        }
-
-
-        public List<AppliedJobsList> GetUserAppliedJobs(JobContext context, string UserId)
-        {
-            List<AppliedJobsList> appliedJobsList = new List<AppliedJobsList>();
-            var result = context.AppliedJobs.Where(x => x.UserIdentityId == UserId).ToList();
-            foreach (var item in result)
-            {
-             
-                var jobs = context.Employers.Where(x => x.JobId == item.JobId).FirstOrDefault();
-                AppliedJobsList appliedJobsList1 = new AppliedJobsList();
-                appliedJobsList1.JobId = item.JobId;
-                appliedJobsList1.JobTitle = jobs?.JobTitle;
-                appliedJobsList1.JobDescription = jobs?.JobDescription;
-                appliedJobsList1.JobCategory = jobs?.JobCategory;
-                appliedJobsList1.Salary = jobs?.Salary;
-                appliedJobsList1.CompanyName = jobs?.CompanyName;
-                appliedJobsList1.ComapanyEmail = jobs?.ComapanyEmail;
-                appliedJobsList1.CompanyAddress = jobs?.CompanyAddress;
-                appliedJobsList1.CompanyWebsite = jobs?.CompanyWebsite;
-                appliedJobsList1.AppliedJobDate = item.AppliedJobDate;
-                appliedJobsList1.AppliedJobId = item.AppliedJobId;
-                appliedJobsList.Add(appliedJobsList1);
-            }
-            return appliedJobsList;
-        }
-
-        public List<SavedJobList> GetUserSavedJobs(JobContext context, string UserId)
-        {
-            List<SavedJobList> savedJobsList = new List<SavedJobList>();
-            var result = context.SavedJobs.Where(x => x.UserIdentityId == UserId).ToList();
-            foreach (var item in result)
-            {
-
-                var jobs = context.Employers.Where(x => x.JobId == item.JobId).FirstOrDefault();
-                SavedJobList savedJobsList1 = new SavedJobList();
-                savedJobsList1.JobId = item.JobId;
-                savedJobsList1.JobTitle = jobs?.JobTitle;
-                savedJobsList1.JobDescription = jobs?.JobDescription;
-                savedJobsList1.JobCategory = jobs?.JobCategory;
-                savedJobsList1.Salary = jobs?.Salary;
-                savedJobsList1.CompanyName = jobs?.CompanyName;
-                savedJobsList1.ComapanyEmail = jobs?.ComapanyEmail;
-                savedJobsList1.CompanyAddress = jobs?.CompanyAddress;
-                savedJobsList1.CompanyWebsite = jobs?.CompanyWebsite;
-                savedJobsList1.SavedJobId = item.SavedJobId;
-                savedJobsList.Add(savedJobsList1);
-            }
-            return savedJobsList;
-        }
-
-
+ 
     }  
 }

@@ -17,8 +17,5 @@ namespace Job.Data.Repository
         public DbSet<Users> Users { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
         public DbSet<Prescription> Prescription { get; set; }
-        public DbSet<Employer> Employers { get; set; }
-        public DbSet<AppliedJobs> AppliedJobs { get; set; }
-        public DbSet<SavedJobs> SavedJobs { get; set; }
     }
 }

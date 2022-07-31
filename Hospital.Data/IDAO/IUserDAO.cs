@@ -11,6 +11,7 @@ namespace Job.Data.IDAO
 {
     public interface IUserDAO
     {
+        IList<Users> GetUsers(JobContext context);
         IList<Users> GetRegistered(JobContext context);
         IList<Users> GetListOfDoctors(JobContext context);
         Users GetDoctorsData(JobContext context, int userId);
@@ -26,9 +27,6 @@ namespace Job.Data.IDAO
         void RemovePatient(JobContext context, string identityId);
         Users GetUserData(JobContext context, string id);
         Users GetLoggedInUserData(JobContext context, string IdentityId);
-        void EditProfile(JobContext context, Users employer, string userId);
-        string GetResumePath(JobContext context, string IdentityId);
-        List<AppliedJobsList> GetUserAppliedJobs(JobContext context, string UserId);
-        List<SavedJobList> GetUserSavedJobs(JobContext context, string UserId);
+
     }
 }
