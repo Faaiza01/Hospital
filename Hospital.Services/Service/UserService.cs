@@ -68,6 +68,33 @@ namespace Job.Services.Service
             }
         }
 
+
+        public IList<DAppointmentHistory> GetDoctorAppointmentHistory(int userId)
+        {
+            using (var context = new JobContext())
+            {
+                return UserDAO.GetDoctorAppointmentHistory(context, userId);
+            }
+        }
+        public void CancelAppointmentByDoctor(int appointmentId)
+        {
+            using (var context = new JobContext())
+            {
+                UserDAO.CancelAppointmentByDoctor(context, appointmentId);
+            }
+        }
+
+        public void Prescribe( PrescribeDto prescribeDto, int id)
+        {
+
+            using (var context = new JobContext())
+            {
+                UserDAO.Prescribe(context, prescribeDto, id);//Add user
+                context.SaveChanges();
+            }
+        }
+
+
         public void AddUser(Users Users)
         {
 

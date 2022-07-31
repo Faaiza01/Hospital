@@ -45,6 +45,49 @@ namespace Job.Data.DAO
             context.Users.Remove(context.Users.Find(id));
             context.SaveChanges();
         }
+        public List<DAppointmentHistory> GetDoctorAppointmentHistory(JobContext context, int userId)
+        {
+            List<DAppointmentHistory> appointmentHistoryDtos = new List<DAppointmentHistory>();
+            var myAppointments = context.Appointment.Where(x => x.DoctorId == userId).ToList();
+            foreach (var item in myAppointments)
+            {
+                DAppointmentHistory dAppointmentHistoryDto = new DAppointmentHistory();
+
+                var myPatient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
+                dAppointmentHistoryDto.AppointmentId = item.AppointmentId;
+                dAppointmentHistoryDto.PatientName = myPatient?.FirstName + ' ' + myPatient?.LastName;
+                dAppointmentHistoryDto.Gender = myPatient?.Gender;
+                dAppointmentHistoryDto.Email = myPatient?.Email;
+                dAppointmentHistoryDto.ContactNumber = myPatient?.ContactNumber;
+                dAppointmentHistoryDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                dAppointmentHistoryDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                dAppointmentHistoryDto.Status = item?.Status == true ? "Active" : "Closed";
+                dAppointmentHistoryDto.IsCancelledByPatient = item.IsCancelledByPatient;
+                dAppointmentHistoryDto.IsCancelledByDoctor = item.IsCancelledByDoctor;
+                appointmentHistoryDtos.Add(dAppointmentHistoryDto);
+            }
+            return appointmentHistoryDtos;
+        }
+
+        public void CancelAppointmentByDoctor(JobContext context, int appointmentId)
+        {
+            context.Appointment.Find(appointmentId).IsCancelledByDoctor = true;
+            context.Appointment.Find(appointmentId).Status = false;
+            context.SaveChanges();
+        }
+
+        public void Prescribe(JobContext context, PrescribeDto prescribeDto, int id)
+        {
+            Prescription prescription = new Prescription();
+            prescription.AppointmentId = id;
+            prescription.Symptoms = prescribeDto.Symptoms;
+            prescription.Diseases = prescribeDto.Diseases;
+            prescription.Allergies = prescribeDto.Allergies;
+            prescription.Prescriptions = prescribeDto.Prescription;
+            context.Prescription.Add(prescription);
+            context.SaveChanges();
+        }
+
         public void AddUser(JobContext context, Users Users)
         {
             context.Users.Add(Users);

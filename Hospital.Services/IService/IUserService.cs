@@ -16,6 +16,9 @@ namespace Job.Services.IService
         Users GetDoctorData(int userId);
         void EditDoctor(Users users, int userId);
         void DeleteDoctor(int id);
+        IList<DAppointmentHistory> GetDoctorAppointmentHistory(int userId);
+        void CancelAppointmentByDoctor(int appointmentId);
+        void Prescribe(PrescribeDto prescribeDto, int id);
         void AddUser(Users Users);
         void RemoveUser(string id);
         Users GetUserData(string id);

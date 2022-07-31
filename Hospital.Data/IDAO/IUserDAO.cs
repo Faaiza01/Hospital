@@ -16,6 +16,9 @@ namespace Job.Data.IDAO
         Users GetDoctorsData(JobContext context, int userId);
         void EditDoctor(JobContext context, Users doctor, int userId);
         void DeleteDoctor(JobContext context, int id);
+        List<DAppointmentHistory> GetDoctorAppointmentHistory(JobContext context, int userId);
+        void CancelAppointmentByDoctor(JobContext context, int appointmentId);
+        void Prescribe(JobContext context, PrescribeDto prescribeDto, int id);
         void AddUser(JobContext context, Users Users);
         void RemoveUser(JobContext context, string identityId);
         Users GetUserData(JobContext context, string id);

@@ -1,7 +1,9 @@
-﻿using Job.Data.Models.Domain;
+﻿using Job.Data;
+using Job.Data.Models.Domain;
 using Job.Models;
 using Job.Services.IService;
 using Job.Services.Service;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +93,42 @@ namespace Forest.Controllers
                 return View();
             }
         }
+        public ActionResult DoctorAppointments()
+        {
+            var identityId = User.Identity.GetUserId();
+            var user = UserService.GetUserData(identityId);
+            ViewBag.DocAppointments = UserService.GetDoctorAppointmentHistory(user.UserId);
+            return View(ViewBag.DocAppointments);
+        }
+
+        public ActionResult DoctorCancelAppointment(int appointmentId)
+        {
+            UserService.CancelAppointmentByDoctor(appointmentId);
+            return RedirectToAction("DoctorAppointments");
+        }
+
+        public ActionResult Prescribe(int id)
+        {
+            PrescribeDto prescribeDto = new PrescribeDto();
+            prescribeDto.AppointmentId = id;
+            return View(prescribeDto);
+        }
+
+        [HttpPost]
+        public ActionResult Prescribe(int id, PrescribeDto prescribeDto)
+        {
+            try
+            {
+                UserService.Prescribe(prescribeDto, id);
+                return RedirectToAction("ViewDoctors", "Doctor");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
 
     }
 }
