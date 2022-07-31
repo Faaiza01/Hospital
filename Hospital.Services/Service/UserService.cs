@@ -4,7 +4,6 @@ using Hospital.Data.IDAO;
 using Hospital.Data.Models.Domain;
 using Hospital.Data.Repository;
 using Hospital.Services.IService;
-using Hospital.Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 

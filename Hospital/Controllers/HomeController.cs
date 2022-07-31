@@ -1,7 +1,6 @@
 ﻿using Hospital.Data.Models.Domain;
 using Hospital.Models;
 using Hospital.Services.IService;
-using Hospital.Services.Models;
 using Hospital.Services.Service;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
