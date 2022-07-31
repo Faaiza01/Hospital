@@ -59,7 +59,7 @@
                     @if ((Session["Data"] as Users)?.Role == "Doctor")
 
                     {
-                     <li>@Html.ActionLink("ViewAppointments ", "DoctorAppointments", "Doctor", new { area = "" }, null)</li>}
+                     <li>@Html.ActionLink("ViewAppointments ", "DoctorAppointments", "Doctor", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Prescription List ", "Index", "Prescription", new { area = "" }, null)</li>
                     }
 

@@ -152,14 +152,16 @@ namespace Hospital.Data.DAO
                 var patient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
                 var doctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
                 var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                if (prescriptions == null)
+                    continue;
                 prescriptionListDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
                 prescriptionListDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
                 prescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
                 prescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
-                prescriptionListDto.Symptoms = prescriptions.Symptoms;
-                prescriptionListDto.Diseases = prescriptions.Diseases;
-                prescriptionListDto.Allergies = prescriptions.Allergies;
-                prescriptionListDto.Prescriptions = prescriptions.Prescriptions;
+                prescriptionListDto.Symptoms = prescriptions?.Symptoms;
+                prescriptionListDto.Diseases = prescriptions?.Diseases;
+                prescriptionListDto.Allergies = prescriptions?.Allergies;
+                prescriptionListDto.Prescriptions = prescriptions?.Prescriptions;
                 allPrescriptionListDtos.Add(prescriptionListDto);
             }
             return allPrescriptionListDtos;

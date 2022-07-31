@@ -7,10 +7,10 @@
 
 <style>
     .form {
-        background-color: #15172b;
+        background-color: #8e2bbb;
         border-radius: 20px;
         box-sizing: border-box;
-        height: 550px;
+        height: 620px;
         padding: 20px;
         width: 650px;
         margin: auto;
@@ -48,7 +48,7 @@
     }
 
     .input {
-        background-color: #303245;
+        background-color: #8a50d3;
         border-radius: 12px;
         border: 0;
         box-sizing: border-box;
@@ -61,7 +61,6 @@
     }
 
     .cut {
-        background-color: #15172b;
         border-radius: 10px;
         height: 20px;
         left: 20px;
@@ -73,7 +72,6 @@
     }
 
     .cutConfirm {
-        background-color: #15172b;
         border-radius: 10px;
         height: 20px;
         left: 20px;
@@ -88,18 +86,18 @@
         width: 50px;
     }
 
-    .input:focus~.cut,
-    .input:not(:placeholder-shown)~.cut {
+    .input:focus ~ .cut,
+    .input:not(:placeholder-shown) ~ .cut {
         transform: translateY(8px);
     }
 
-    .input:focus~.cutConfirm,
-    .input:not(:placeholder-shown)~.cutConfirm {
+    .input:focus ~ .cutConfirm,
+    .input:not(:placeholder-shown) ~ .cutConfirm {
         transform: translateY(8px);
     }
 
     .placeholder {
-        color: #65657b;
+        color: #f5f5f7;
         font-family: sans-serif;
         left: 20px;
         line-height: 14px;
@@ -110,21 +108,21 @@
         top: 20px;
     }
 
-    .input:focus~.placeholder,
-    .input:not(:placeholder-shown)~.placeholder {
+    .input:focus ~ .placeholder,
+    .input:not(:placeholder-shown) ~ .placeholder {
         transform: translateY(-30px) translateX(10px) scale(0.75);
     }
 
-    .input:not(:placeholder-shown)~.placeholder {
-        color: #808097;
+    .input:not(:placeholder-shown) ~ .placeholder {
+        color: #fcfcff;
     }
 
-    .input:focus~.placeholder {
+    .input:focus ~ .placeholder {
         color: #dc2f55;
     }
 
     .submit {
-        background-color: #08d;
+        background-color: #dd7ce7;
         border-radius: 12px;
         border: 0;
         box-sizing: border-box;
@@ -139,9 +137,7 @@
     }
 
     .role_select {
-
         width: 100%;
-
         height: 50px;
         background-color: #303245;
         border-radius: 12px;
@@ -169,10 +165,6 @@
 
     .textAlign {
         text-align: center;
-    }
-
-    .line {
-        border-bottom: 1px solid black;
     }
 </style>
 <h2 class="marginTop">Prescribe</h2>
