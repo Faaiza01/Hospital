@@ -188,6 +188,7 @@
     <Compile Include="Controllers\EmployerController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
+    <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
@@ -335,6 +336,7 @@
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\Doctor\DoctorAppointments.cshtml" />
     <Content Include="Views\Doctor\Prescribe.cshtml" />
+    <Content Include="Views\Prescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

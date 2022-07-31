@@ -94,6 +94,13 @@ namespace Job.Services.Service
             }
         }
 
+        public IList<DPrescriptionListDto> GetPrescriptionList(int userId)
+        {
+            using (var context = new JobContext())
+            {
+                return UserDAO.GetPrescriptionList(context, userId);
+            }
+        }
 
         public void AddUser(Users Users)
         {

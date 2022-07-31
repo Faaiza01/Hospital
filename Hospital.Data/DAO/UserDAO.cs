@@ -88,6 +88,28 @@ namespace Job.Data.DAO
             context.SaveChanges();
         }
 
+        public List<DPrescriptionListDto> GetPrescriptionList(JobContext context, int userId)
+        {
+            List<DPrescriptionListDto> dPrescriptionListDtos = new List<DPrescriptionListDto>();
+            var myAppointment = context.Appointment.Where(x => x.DoctorId == userId).ToList();
+            foreach (var item in myAppointment)
+            {
+                DPrescriptionListDto dPrescriptionListDto = new DPrescriptionListDto();
+                var myPatient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
+                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                dPrescriptionListDto.PatientName = myPatient?.FirstName + ' ' + myPatient?.LastName;
+                dPrescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                dPrescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                dPrescriptionListDto.Symptoms = prescriptions.Symptoms;
+                dPrescriptionListDto.Diseases = prescriptions.Diseases;
+                dPrescriptionListDto.Allergies = prescriptions.Allergies;
+                dPrescriptionListDto.Prescriptions = prescriptions.Prescriptions;
+                dPrescriptionListDtos.Add(dPrescriptionListDto);
+            }
+            return dPrescriptionListDtos;
+        }
+
+
         public void AddUser(JobContext context, Users Users)
         {
             context.Users.Add(Users);
