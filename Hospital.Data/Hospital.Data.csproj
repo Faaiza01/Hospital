@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppliedJobsList.cs" />
+    <Compile Include="PAppointmentHistoryDto.cs" />
     <Compile Include="BookAppointmentDto.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="DAO\JobDAO.cs" />

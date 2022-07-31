@@ -51,12 +51,29 @@ namespace Job.Services.Service
                 PatientId = userId,
                 DoctorId = Int32.Parse(bookAppointmentDto.Doctor),
                 AppointmentDateTime = bookAppointmentDto.AppointmentDateTime,
+                Status = true
             };
 
             using (var context = new JobContext())
             {
                 JobDAO.BookAppointment(context, appointment);//Add job
                 context.SaveChanges();
+            }
+        }
+
+        public IList<PAppointmentHistoryDto> GetPatientAppointmentHistory(int userId)
+        {
+            using (var context = new JobContext())
+            {
+                return JobDAO.GetPatientAppointmentHistory(context, userId);
+            }
+        }
+
+        public void CancelAppointment(int appointmentId)
+        {
+            using (var context = new JobContext())
+            {
+                JobDAO.CancelAppointment(context, appointmentId);
             }
         }
 

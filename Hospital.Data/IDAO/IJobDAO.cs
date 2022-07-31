@@ -16,6 +16,8 @@ namespace Job.Data.IDAO
         List<Users> GetDoctorByDepartment(JobContext context, string department);
         decimal GetDoctorsFee(JobContext context, string userId);
         void BookAppointment(JobContext context, Appointment appointment);
+        List<PAppointmentHistoryDto> GetPatientAppointmentHistory(JobContext context, int userId);
+        void CancelAppointment(JobContext context, int appointmentId);
         Employer GetJob(JobContext context, int id);
         IList<Employer> GetJobs(JobContext context);
         void AddJob(JobContext context, Employer employer);

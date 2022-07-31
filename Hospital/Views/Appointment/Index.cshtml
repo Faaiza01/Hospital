@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Job.Data.ListOfApplicantsDto>
+﻿@model IEnumerable<Job.Data.PAppointmentHistoryDto>
 
 <!DOCTYPE html>
 <html>
@@ -100,59 +100,57 @@
     </style>
 </head>
 
-<h2 class="marginTop">List of Applicants</h2>
+<h2 class="marginTop">My Appointments</h2>
 <hr class="line">
 <ul>
     <li class="table-header list">
-        <div class="col col-2"> @Html.DisplayNameFor(model => model.NameOfApplicant)</div>
+        <div class="col col-2"> @Html.DisplayNameFor(model => model.DoctorName)</div>
 
-        <div class="col col-2"> @Html.DisplayNameFor(model => model.Email)</div>
-        <div class="col col-2">@Html.DisplayNameFor(model => model.JobTitle)</div>
-        <div class="col col-2">@Html.DisplayNameFor(model => model.CompanyName)</div>
-        <div class="col col-2">@Html.DisplayNameFor(model => model.ComapanyEmail)</div>
+        <div class="col col-2"> @Html.DisplayNameFor(model => model.ConsultancyFee)</div>
+        <div class="col col-2">@Html.DisplayNameFor(model => model.AppointmentDate)</div>
+        <div class="col col-2">@Html.DisplayNameFor(model => model.AppointmentTime)</div>
+        <div class="col col-2">@Html.DisplayNameFor(model => model.Status)</div>
 
-        <div class="col col-2">@Html.DisplayNameFor(model => model.AppliedJobDate)</div>
-        <div class="col col-2">Resume</div>
+        <div class="col col-2">Cancel</div>
     </li>
 </ul>
 <ul>
     @foreach (var item in Model)
     {
-        <li class="table-row list">
-            <div class="col col-2" data-label="Job Id">@item.NameOfApplicant</div>
+    <li class="table-row list">
+        <div class="col col-2" data-label="Job Id">@item.DoctorName</div>
 
-            <div class="col col-2" data-label="Payment Status">@item.Email</div>
-            <div class="col col-2" data-label="Amount">@item.JobTitle</div>
-            <div class="col col-2" data-label="Customer Name">@item.CompanyName</div>
-            <div class="col col-2" data-label="Job Id"> @item.ComapanyEmail</div>
+        <div class="col col-2" data-label="Payment Status">@item.ConsultancyFee</div>
+        <div class="col col-2" data-label="Amount">@item.AppointmentDate</div>
+        <div class="col col-2" data-label="Customer Name">@item.AppointmentTime</div>
+        <div class="col col-2" data-label="Job Id"> @item.Status</div>
 
 
-            <div class="col col-2" data-label="Amount">
-                @item.AppliedJobDate
-            </div>
-            @if (@item.Resume != null)
-            {
-                <div class="col col-2" data-label="Amount">
-                    <div class="button">
-                        <a href="#" class="btntext alink" target="_blank">
-                            @Html.ActionLink("Download", "PdfDownload", new
-                    {
-                    userId =item.IdentityId
-                    })
-                        </a>
-                    </div>
-                </div>
+        @if (@item.IsCancelledByDoctor == false && item.IsCancelledByPatient == false)
+        {
+    <div class="col col-2" data-label="Amount">
+        <div class="button">
+            <a href="#" class="btntext alink" target="_blank">
+                @Html.ActionLink("Cancel", "CancelAppointment", new
+                {
+                    appointmentId = item.AppointmentId
+                })
+            </a>
+        </div>
+    </div>}
+        @if (@item.IsCancelledByPatient == true)
+        {
+    <div class="col col-2" data-label="Amount">
+        Cancelled By Patient
+    </div>}
 
-            }
-            @if (@item.Resume == null)
-            {
-                <div class="col col-2" data-label="Amount">
-                    -
-                </div>
+        @if (@item.IsCancelledByDoctor == true)
+        {
+    <div class="col col-2" data-label="Amount">
+        Cancelled By Doctor
+    </div>}
 
-            }
-
-        </li>
+    </li>
 
 
 

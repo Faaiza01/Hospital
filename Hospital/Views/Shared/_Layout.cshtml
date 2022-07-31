@@ -17,7 +17,7 @@
 
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        @Html.ActionLink("JOBMENIA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("HSM", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,14 +46,14 @@
                     <li>@Html.ActionLink("Add a Doctor", "Index", "Doctor", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("List of Doctors", "ViewDoctors", "Doctor", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Book Appointment", "Index", "Patient", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Employer Dashboard", "Index", "Employer", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("List of Applicants ", "Index", "Applicant", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("My Appointments", "Index", "Appointment", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("ViewAppointments ", "DoctorAppointment", "Doctor", new { area = "" }, null)</li>
                     @*}
         @if ((Session["Data"] as Users)?.Role == "Patient")
         {*@
                     @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
-                    <li>@Html.ActionLink("Job Opening", "Index", "Search", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>
+                    @*<li>@Html.ActionLink("Job Opening", "Index", "Search", new { area = "" }, null)</li>*@
+                    @*<li>@Html.ActionLink("Profile", "Index", "Profile", new { area = "" }, null)</li>*@
                     <li>@Html.ActionLink("Job Dashboard", "Index", "JobDashboard", new { area = "" }, null)</li>
 
                     @*}

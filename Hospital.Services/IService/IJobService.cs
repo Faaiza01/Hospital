@@ -16,6 +16,8 @@ namespace Job.Services.IService
         List<Users> GetDoctorByDepartment(string department);
         decimal GetDoctorsFee(string userId);
         void BookAppointment(BookAppointmentDto bookAppointmentDto, int userId);
+        IList<PAppointmentHistoryDto> GetPatientAppointmentHistory(int userId);
+        void CancelAppointment(int appointmentId);
         Employer GetJob(int id);
         IList<Employer> GetJobs();
         void AddJob(PostJobDto postJobDto, string userId);

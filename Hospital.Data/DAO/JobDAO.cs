@@ -40,6 +40,35 @@ namespace Job.Data.DAO
             context.SaveChanges();
         }
 
+        public List<PAppointmentHistoryDto> GetPatientAppointmentHistory(JobContext context, int userId)
+        {
+            List<PAppointmentHistoryDto> appointmentHistoryDtos = new List<PAppointmentHistoryDto>();
+            var myAppointments = context.Appointment.Where(x => x.PatientId == userId).ToList();
+            foreach (var item in myAppointments)
+            {
+                PAppointmentHistoryDto pAppointmentHistoryDto = new PAppointmentHistoryDto();
+
+                var myDoctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
+                pAppointmentHistoryDto.AppointmentId = item.AppointmentId;
+                pAppointmentHistoryDto.DoctorName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
+                pAppointmentHistoryDto.ConsultancyFee = myDoctor?.ConsultancyFee;
+                pAppointmentHistoryDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                pAppointmentHistoryDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                pAppointmentHistoryDto.Status = item?.Status ==  true ? "Active" : "Closed";
+                pAppointmentHistoryDto.IsCancelledByPatient = item.IsCancelledByPatient;
+                pAppointmentHistoryDto.IsCancelledByDoctor = item.IsCancelledByDoctor;
+                appointmentHistoryDtos.Add(pAppointmentHistoryDto);
+            }
+            return appointmentHistoryDtos;
+        }
+
+        public void CancelAppointment(JobContext context, int appointmentId)
+        {
+            context.Appointment.Find(appointmentId).IsCancelledByPatient = true;
+            context.Appointment.Find(appointmentId).Status = false;
+            context.SaveChanges();
+        }
+
 
         public Employer GetJob(JobContext context, int id)
         {

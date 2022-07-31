@@ -14,5 +14,8 @@ namespace Job.Data.Models.Domain
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
         public string AppointmentDateTime { get; set; }
+        public bool Status { get; set; }
+        public bool IsCancelledByPatient { get; set; }
+        public bool IsCancelledByDoctor { get; set; }
     }
 }
