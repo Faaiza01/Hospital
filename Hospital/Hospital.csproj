@@ -335,10 +335,6 @@
       <Project>{9f6cda28-22f7-423f-9ce4-96cc168aadad}</Project>
       <Name>Forest.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hospital.InServices\Hospital.InServices.csproj">
-      <Project>{f7df6d92-0958-4d21-8da3-261b4743e8f4}</Project>
-      <Name>Forest.InServices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Hospital.Services\Hospital.Services.csproj">
       <Project>{5e258831-b376-4d88-908c-d749276824d4}</Project>
       <Name>Forest.Services</Name>
