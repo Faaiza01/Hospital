@@ -49,9 +49,9 @@ namespace Hospital.Data.DAO
                 PAppointmentHistoryDto pAppointmentHistoryDto = new PAppointmentHistoryDto();
 
                 var myDoctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
-                var prescription = context.Prescription.Where(x => x.AppointmentId == item.AppointmentId).FirstOrDefault();
+                var Treatment = context.Treatment.Where(x => x.AppointmentId == item.AppointmentId).FirstOrDefault();
 
-                if (prescription != null)
+                if (Treatment != null)
                     continue;
                 pAppointmentHistoryDto.AppointmentId = item.AppointmentId;
                 pAppointmentHistoryDto.DoctorName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
@@ -86,6 +86,7 @@ namespace Hospital.Data.DAO
 
                 appointmentDetailsDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
                 appointmentDetailsDto.ConsultancyFee = doctor?.ConsultancyFee;
+                appointmentDetailsDto.PatientId = patient?.PatientId;
                 appointmentDetailsDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
                 appointmentDetailsDto.Gender = patient?.Gender;
                 appointmentDetailsDto.ContactNumber = patient?.ContactNumber;

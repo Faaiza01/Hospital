@@ -58,10 +58,11 @@ namespace Hospital.Data.DAO
                 DAppointmentHistory dAppointmentHistoryDto = new DAppointmentHistory();
 
                 var myPatient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
-                var prescription = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
-                if (prescription != null)
+                var Treatment = context.Treatment.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                if (Treatment != null)
                     continue;
                 dAppointmentHistoryDto.AppointmentId = item.AppointmentId;
+                dAppointmentHistoryDto.PatientId = myPatient.PatientId;
                 dAppointmentHistoryDto.PatientName = myPatient?.FirstName + ' ' + myPatient?.LastName;
                 dAppointmentHistoryDto.Gender = myPatient?.Gender;
                 dAppointmentHistoryDto.Email = myPatient?.Email;
@@ -83,88 +84,90 @@ namespace Hospital.Data.DAO
             context.SaveChanges();
         }
 
-        public void Prescribe(HospitalContext context, PrescribeDto prescribeDto, int id)
+        public void Treatment(HospitalContext context, TreatmentDto prescribeDto, int id)
         {
-            Prescription prescription = new Prescription();
-            prescription.AppointmentId = id;
-            prescription.Symptoms = prescribeDto.Symptoms;
-            prescription.Diseases = prescribeDto.Diseases;
-            prescription.Allergies = prescribeDto.Allergies;
-            prescription.Prescriptions = prescribeDto.Prescription;
-            context.Prescription.Add(prescription);
+            Treatment Treatment = new Treatment();
+            Treatment.AppointmentId = id;
+            Treatment.Symptoms = prescribeDto.Symptoms;
+            Treatment.Diseases = prescribeDto.Diseases;
+            Treatment.Allergies = prescribeDto.Allergies;
+            Treatment.Medicines = prescribeDto.Medicines;
+            context.Treatment.Add(Treatment);
             context.SaveChanges();
         }
 
-        public List<DPrescriptionListDto> GetPrescriptionList(HospitalContext context, int userId)
+        public List<DTreatmentListDto> GetTreatmentList(HospitalContext context, int userId)
         {
-            List<DPrescriptionListDto> dPrescriptionListDtos = new List<DPrescriptionListDto>();
+            List<DTreatmentListDto> dTreatmentListDtos = new List<DTreatmentListDto>();
             var myAppointment = context.Appointment.Where(x => x.DoctorId == userId).ToList();
             foreach (var item in myAppointment)
             {
-                DPrescriptionListDto dPrescriptionListDto = new DPrescriptionListDto();
+                DTreatmentListDto dTreatmentListDto = new DTreatmentListDto();
                 var myPatient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
-                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
-                if (prescriptions == null)
+                var Treatments = context.Treatment.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                if (Treatments == null)
                     continue;
-                dPrescriptionListDto.PatientName = myPatient?.FirstName + ' ' + myPatient?.LastName;
-                dPrescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
-                dPrescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
-                dPrescriptionListDto.Symptoms = prescriptions.Symptoms;
-                dPrescriptionListDto.Diseases = prescriptions.Diseases;
-                dPrescriptionListDto.Allergies = prescriptions.Allergies;
-                dPrescriptionListDto.Prescriptions = prescriptions.Prescriptions;
-                dPrescriptionListDtos.Add(dPrescriptionListDto);
+                dTreatmentListDto.PatientId = myPatient?.PatientId;
+                dTreatmentListDto.PatientName = myPatient?.FirstName + ' ' + myPatient?.LastName;
+                dTreatmentListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                dTreatmentListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                dTreatmentListDto.Symptoms = Treatments.Symptoms;
+                dTreatmentListDto.Diseases = Treatments.Diseases;
+                dTreatmentListDto.Allergies = Treatments.Allergies;
+                dTreatmentListDto.Treatments = Treatments.Medicines;
+                dTreatmentListDtos.Add(dTreatmentListDto);
             }
-            return dPrescriptionListDtos;
+            return dTreatmentListDtos;
         }
 
-        public List<PPrescriptionListDto> GetPatientPrescriptionList(HospitalContext context, int userId)
+        public List<PTreatmentListDto> GetPatientTreatmentList(HospitalContext context, int userId)
         {
-            List<PPrescriptionListDto> pPrescriptionListDtos = new List<PPrescriptionListDto>();
+            List<PTreatmentListDto> pTreatmentListDtos = new List<PTreatmentListDto>();
             var myAppointment = context.Appointment.Where(x => x.PatientId == userId).ToList();
             foreach (var item in myAppointment)
             {
-                PPrescriptionListDto pPrescriptionListDto = new PPrescriptionListDto();
+                PTreatmentListDto pTreatmentListDto = new PTreatmentListDto();
                 var myDoctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
-                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
-                if (prescriptions == null)
+                var Treatments = context.Treatment.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                if (Treatments == null)
                     continue;
-                pPrescriptionListDto.DoctorsName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
-                pPrescriptionListDto.Fee = myDoctor.ConsultancyFee;
-                pPrescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
-                pPrescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
-                pPrescriptionListDto.Symptoms = prescriptions?.Symptoms;
-                pPrescriptionListDto.Diseases = prescriptions?.Diseases;
-                pPrescriptionListDto.Allergies = prescriptions?.Allergies;
-                pPrescriptionListDto.Prescriptions = prescriptions?.Prescriptions;
-                pPrescriptionListDtos.Add(pPrescriptionListDto);
+                pTreatmentListDto.DoctorsName = myDoctor?.FirstName + ' ' + myDoctor?.LastName;
+                pTreatmentListDto.Fee = myDoctor.ConsultancyFee;
+                pTreatmentListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                pTreatmentListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                pTreatmentListDto.Symptoms = Treatments?.Symptoms;
+                pTreatmentListDto.Diseases = Treatments?.Diseases;
+                pTreatmentListDto.Allergies = Treatments?.Allergies;
+                pTreatmentListDto.Treatments = Treatments?.Medicines;
+                pTreatmentListDtos.Add(pTreatmentListDto);
             }
-            return pPrescriptionListDtos;
+            return pTreatmentListDtos;
         }
 
-        public List<AllPrescriptionListDto> GetAllPrescriptionList(HospitalContext context)
+        public List<AllTreatmentListDto> GetAllTreatmentList(HospitalContext context)
         {
-            List<AllPrescriptionListDto> allPrescriptionListDtos = new List<AllPrescriptionListDto>();
+            List<AllTreatmentListDto> allTreatmentListDtos = new List<AllTreatmentListDto>();
             var appointments = context.Appointment.ToList();
             foreach (var item in appointments)
             {
-                AllPrescriptionListDto prescriptionListDto = new AllPrescriptionListDto();
+                AllTreatmentListDto TreatmentListDto = new AllTreatmentListDto();
                 var patient = context.Users.Where(c => c.UserId == item.PatientId).FirstOrDefault();
                 var doctor = context.Users.Where(c => c.UserId == item.DoctorId).FirstOrDefault();
-                var prescriptions = context.Prescription.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
-                if (prescriptions == null)
+                var Treatments = context.Treatment.Where(c => c.AppointmentId == item.AppointmentId).FirstOrDefault();
+                if (Treatments == null)
                     continue;
-                prescriptionListDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
-                prescriptionListDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
-                prescriptionListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
-                prescriptionListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
-                prescriptionListDto.Symptoms = prescriptions?.Symptoms;
-                prescriptionListDto.Diseases = prescriptions?.Diseases;
-                prescriptionListDto.Allergies = prescriptions?.Allergies;
-                prescriptionListDto.Prescriptions = prescriptions?.Prescriptions;
-                allPrescriptionListDtos.Add(prescriptionListDto);
+                TreatmentListDto.PatientId = patient?.PatientId;
+                TreatmentListDto.PatientName = patient?.FirstName + ' ' + patient?.LastName;
+                TreatmentListDto.DoctorName = doctor?.FirstName + ' ' + doctor?.LastName;
+                TreatmentListDto.AppointmentDate = item?.AppointmentDateTime.Split(' ')[0];
+                TreatmentListDto.AppointmentTime = item?.AppointmentDateTime.Split(' ')[1];
+                TreatmentListDto.Symptoms = Treatments?.Symptoms;
+                TreatmentListDto.Diseases = Treatments?.Diseases;
+                TreatmentListDto.Allergies = Treatments?.Allergies;
+                TreatmentListDto.Treatments = Treatments?.Medicines;
+                allTreatmentListDtos.Add(TreatmentListDto);
             }
-            return allPrescriptionListDtos;
+            return allTreatmentListDtos;
         }
         public void AddUser(HospitalContext context, Users Users)
         {

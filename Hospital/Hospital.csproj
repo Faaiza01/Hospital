@@ -184,7 +184,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
+    <Compile Include="Controllers\TreatmentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -308,11 +308,11 @@
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
     <Content Include="Views\Doctor\DoctorAppointments.cshtml" />
-    <Content Include="Views\Doctor\Prescribe.cshtml" />
-    <Content Include="Views\Prescription\Index.cshtml" />
-    <Content Include="Views\Patient\PrescriptionList.cshtml" />
+    <Content Include="Views\Doctor\Treatment.cshtml" />
+    <Content Include="Views\Treatment\Index.cshtml" />
+    <Content Include="Views\Patient\TreatmentList.cshtml" />
     <Content Include="Views\Appointment\AppointmentDetail.cshtml" />
-    <Content Include="Views\Prescription\PrescriptionList.cshtml" />
+    <Content Include="Views\Treatment\TreatmentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

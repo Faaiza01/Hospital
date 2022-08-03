@@ -50,6 +50,8 @@ namespace Hospital.Models
         public string Gender { get; set; }
         public decimal ConsultancyFee { get; set; }
         public string Specialization { get; set; }
+        public string PatientId { get; set; }
+
     }
 
 }

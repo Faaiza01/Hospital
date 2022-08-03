@@ -19,10 +19,10 @@ namespace Hospital.Data.IDAO
         void DeleteDoctor(HospitalContext context, int id);
         List<DAppointmentHistory> GetDoctorAppointmentHistory(HospitalContext context, int userId);
         void CancelAppointmentByDoctor(HospitalContext context, int appointmentId);
-        void Prescribe(HospitalContext context, PrescribeDto prescribeDto, int id);
-        List<DPrescriptionListDto> GetPrescriptionList(HospitalContext context, int userId);
-        List<PPrescriptionListDto> GetPatientPrescriptionList(HospitalContext context, int userId);
-        List<AllPrescriptionListDto> GetAllPrescriptionList(HospitalContext context);
+        void Treatment(HospitalContext context, TreatmentDto prescribeDto, int id);
+        List<DTreatmentListDto> GetTreatmentList(HospitalContext context, int userId);
+        List<PTreatmentListDto> GetPatientTreatmentList(HospitalContext context, int userId);
+        List<AllTreatmentListDto> GetAllTreatmentList(HospitalContext context);
         void AddUser(HospitalContext context, Users Users);
         void RemovePatient(HospitalContext context, string identityId);
         Users GetUserData(HospitalContext context, string id);

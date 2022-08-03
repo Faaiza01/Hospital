@@ -88,12 +88,12 @@ namespace Forest.Controllers
             return Json(fee, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult PrescriptionList()
+        public ActionResult TreatmentList()
         {
             var identityId = User.Identity.GetUserId();
 
             var user = UserService.GetUserData(identityId);
-            ViewBag.Pperscriptions = UserService.GetPatientPrescriptionList(user.UserId);
+            ViewBag.Pperscriptions = UserService.GetPatientTreatmentList(user.UserId);
             return View(ViewBag.Pperscriptions);
 
         }

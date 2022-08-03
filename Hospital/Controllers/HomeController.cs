@@ -64,7 +64,7 @@ namespace Hospital.Controllers
                 LastName = "Admin",
                 Password = "Admin123@",
                 ConfirmPassword = "Admin123@",
-                Email = "admin@gmail.com"
+                Email = "admin1@gmail.com"
             };
             var admin = UserService.GetUsers().Where(x => x.Role == "Admin").FirstOrDefault();
             if (admin == null)

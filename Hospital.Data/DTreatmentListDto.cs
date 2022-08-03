@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Hospital.Data
 {
-    public class PPrescriptionListDto
+    public class DTreatmentListDto
     {
-        public string DoctorsName { get; set; }
-        public decimal Fee { get; set; }
+        public string PatientName { get; set; }
+        public string PatientId { get; set; }
         public string AppointmentDate { get; set; }
         public string AppointmentTime { get; set; }
         public string Symptoms { get; set; }
         public string Diseases { get; set; }
         public string Allergies { get; set; }
-        public string Prescriptions { get; set; }
+        public string Treatments { get; set; }
     }
 }

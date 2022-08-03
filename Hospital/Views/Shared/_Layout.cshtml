@@ -46,21 +46,21 @@
                            <li>@Html.ActionLink("Add a Doctor", "Index", "Doctor", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("List of Doctors", "ViewDoctors", "Doctor", new { area = "" }, null)</li>
                             <li>@Html.ActionLink("Appointment Details", "AppointmentDetail", "Appointment", new { area = "" }, null)</li>
-                           <li>@Html.ActionLink("All Prescriptions", "PrescriptionList", "Prescription", new { area = "" }, null)</li>                                                                                                                      
+                           <li>@Html.ActionLink("All Treatments", "TreatmentList", "Treatment", new { area = "" }, null)</li>                                                                                                                      
                           <li>@Html.ActionLink("Registered Patients", "Index", "Admin", new { area = "" }, null)</li>       
                       }
                     @if ((Session["Data"] as Users)?.Role == "Patient")
                     {
                        <li>@Html.ActionLink("Book Appointment", "Index", "Patient", new { area = "" }, null) </li>
                        <li>@Html.ActionLink("My Appointments", "Index", "Appointment", new { area = "" }, null)</li>
-                       <li>@Html.ActionLink("My Prescription", "PrescriptionList", "Patient", new { area = "" }, null)</li>
+                       <li>@Html.ActionLink("My Treatment", "TreatmentList", "Patient", new { area = "" }, null)</li>
                      }
 
                     @if ((Session["Data"] as Users)?.Role == "Doctor")
 
                     {
                      <li>@Html.ActionLink("ViewAppointments ", "DoctorAppointments", "Doctor", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Prescription List ", "Index", "Prescription", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Treatment List ", "Index", "Treatment", new { area = "" }, null)</li>
                     }
 
                 </ul>

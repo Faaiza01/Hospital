@@ -9,6 +9,7 @@ namespace Hospital.Data
     public class DAppointmentHistory
     {
         public int AppointmentId { get; set; }
+        public string PatientId { get; set; }
         public string PatientName { get; set; }
         public string Gender { get; set; }
         public string Email { get; set; }

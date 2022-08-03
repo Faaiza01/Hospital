@@ -107,20 +107,20 @@ namespace Forest.Controllers
             return RedirectToAction("DoctorAppointments");
         }
 
-        public ActionResult Prescribe(int id)
+        public ActionResult Treatment(int id)
         {
-            PrescribeDto prescribeDto = new PrescribeDto();
+            TreatmentDto prescribeDto = new TreatmentDto();
             prescribeDto.AppointmentId = id;
             return View(prescribeDto);
         }
 
         [HttpPost]
-        public ActionResult Prescribe(int id, PrescribeDto prescribeDto)
+        public ActionResult Treatment(int id, TreatmentDto prescribeDto)
         {
             try
             {
-                UserService.Prescribe(prescribeDto, id);
-                return RedirectToAction("Index", "Prescription");
+                UserService.Treatment(prescribeDto, id);
+                return RedirectToAction("Index", "Treatment");
             }
             catch
             {

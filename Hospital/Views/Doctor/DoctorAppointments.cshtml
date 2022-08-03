@@ -103,6 +103,8 @@
 <hr class="line">
 <ul>
     <li class="table-header list">
+        <div class="col col-2">@Html.DisplayNameFor(model => model.PatientId)</div>
+
         <div class="col col-2"> @Html.DisplayName("Name")</div>
 
         <div class="col col-2"> @Html.DisplayNameFor(model => model.Gender)</div>
@@ -113,7 +115,7 @@
         <div class="col col-2">@Html.DisplayNameFor(model => model.Status)</div>
 
         <div class="col col-2">Cancel</div>
-        <div class="col col-2">Prescribe</div>
+        <div class="col col-2">Treatment</div>
 
     </li>
 </ul>
@@ -121,6 +123,8 @@
     @foreach (var item in Model)
     {
     <li class="table-row list">
+        <div class="col col-2" data-label="Hospital Id">@item.PatientId</div>
+
         <div class="col col-2" data-label="Hospital Id">@item.PatientName</div>
 
         <div class="col col-2" data-label="Payment Status">@item.Gender</div>
@@ -160,7 +164,7 @@
     <div class="col col-2" data-label="Amount">
         <div class="button">
             <a href="#" class="btntext alink" target="_blank">
-                @Html.ActionLink("Prescribe", "Prescribe", new
+                @Html.ActionLink("Treatment", "Treatment", new
                 {
                     id = item.AppointmentId
                 })
@@ -170,10 +174,10 @@
         @if (@item.Status == "Closed")
         {
     <div class="col col-2" data-label="Amount">
-            <a>
-               __
-            </a>
-       
+        <a>
+            __
+        </a>
+
     </div>}
     </li>}
 

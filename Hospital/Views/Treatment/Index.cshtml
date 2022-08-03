@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Hospital.Data.PPrescriptionListDto>
+﻿@model IEnumerable<Hospital.Data.DTreatmentListDto>
 
 <!DOCTYPE html>
 <html>
@@ -99,36 +99,33 @@
     </style>
 </head>
 
-<h2 class="marginTop">My Prescription</h2>
+<h2 class="marginTop">Treatment List</h2>
 <hr class="line">
 <ul>
     <li class="table-header list">
+        <div class="col col-2">@Html.DisplayNameFor(model => model.PatientId)</div>
         <div class="col col-2"> @Html.DisplayName("Name")</div>
-        <div class="col col-2"> @Html.DisplayName("Fee")</div>
-
         <div class="col col-2">@Html.DisplayName("Date")</div>
         <div class="col col-2">@Html.DisplayName("Time")</div>
         <div class="col col-2">@Html.DisplayNameFor(model => model.Symptoms)</div>
         <div class="col col-2">@Html.DisplayNameFor(model => model.Diseases)</div>
         <div class="col col-2">@Html.DisplayNameFor(model => model.Allergies)</div>
-        <div class="col col-2">@Html.DisplayNameFor(model => model.Prescriptions)</div>
+        <div class="col col-2">@Html.DisplayNameFor(model => model.Treatments)</div>
     </li>
 </ul>
 <ul>
     @foreach (var item in Model)
     {
     <li class="table-row list">
-        <div class="col col-2" data-label="Hospital Id">@item.DoctorsName</div>
-        <div class="col col-2" data-label="Hospital Id">@item.Fee</div>
-
+        <div class="col col-2" data-label="Hospital Id">@item.PatientId</div>
+        <div class="col col-2" data-label="Hospital Id">@item.PatientName</div>
         <div class="col col-2" data-label="Customer Name">@item.AppointmentDate</div>
         <div class="col col-2" data-label="Customer Name">@item.AppointmentTime</div>
         <div class="col col-2" data-label="Hospital Id"> @item.Symptoms</div>
         <div class="col col-2" data-label="Hospital Id"> @item.Diseases</div>
         <div class="col col-2" data-label="Hospital Id"> @item.Allergies</div>
-        <div class="col col-2" data-label="Hospital Id"> @item.Prescriptions</div>
-    </li>
-}
+        <div class="col col-2" data-label="Hospital Id"> @item.Treatments</div>
+    </li>}
 
 
 

@@ -155,7 +155,8 @@ namespace Hospital.Controllers
                 Email = model.Email,
                 ContactNumber = model.ContactNumber,
                 Role = "Patient",
-                Gender = model.Gender
+                Gender = model.Gender,
+                PatientId = model.PatientId
             };
             UserService = new UserService();
             UserService.AddUser(Users);

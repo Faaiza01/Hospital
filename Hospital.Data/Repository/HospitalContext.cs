@@ -16,6 +16,6 @@ namespace Hospital.Data.Repository
         }
         public DbSet<Users> Users { get; set; }
         public DbSet<Appointment> Appointment { get; set; }
-        public DbSet<Prescription> Prescription { get; set; }
+        public DbSet<Treatment> Treatment { get; set; }
     }
 }

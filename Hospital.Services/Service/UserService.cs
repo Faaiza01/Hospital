@@ -90,37 +90,37 @@ namespace Hospital.Services.Service
             }
         }
 
-        public void Prescribe( PrescribeDto prescribeDto, int id)
+        public void Treatment( TreatmentDto prescribeDto, int id)
         {
 
             using (var context = new HospitalContext())
             {
-                UserDAO.Prescribe(context, prescribeDto, id);//Add user
+                UserDAO.Treatment(context, prescribeDto, id);//Add user
                 context.SaveChanges();
             }
         }
 
-        public IList<DPrescriptionListDto> GetPrescriptionList(int userId)
+        public IList<DTreatmentListDto> GetTreatmentList(int userId)
         {
             using (var context = new HospitalContext())
             {
-                return UserDAO.GetPrescriptionList(context, userId);
+                return UserDAO.GetTreatmentList(context, userId);
             }
         }
 
-        public IList<PPrescriptionListDto> GetPatientPrescriptionList(int userId)
+        public IList<PTreatmentListDto> GetPatientTreatmentList(int userId)
         {
             using (var context = new HospitalContext())
             {
-                return UserDAO.GetPatientPrescriptionList(context, userId);
+                return UserDAO.GetPatientTreatmentList(context, userId);
             }
         }
 
-        public IList<AllPrescriptionListDto> GetAllPrescriptionList()
+        public IList<AllTreatmentListDto> GetAllTreatmentList()
         {
             using (var context = new HospitalContext())
             {
-                return UserDAO.GetAllPrescriptionList(context);
+                return UserDAO.GetAllTreatmentList(context);
             }
         }
 

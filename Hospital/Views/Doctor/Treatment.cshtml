@@ -1,7 +1,7 @@
-﻿@model Hospital.Data.PrescribeDto
+﻿@model Hospital.Data.TreatmentDto
 
 @{
-    ViewBag.Title = "Prescribe";
+    ViewBag.Title = "Treatment";
 }
 
 
@@ -167,14 +167,14 @@
         text-align: center;
     }
 </style>
-<h2 class="marginTop">Prescribe</h2>
+<h2 class="marginTop">Treatment</h2>
 <hr class="line">
-@using (Html.BeginForm("Prescribe", "Doctor", FormMethod.Post))
+@using (Html.BeginForm("Treatment", "Doctor", FormMethod.Post))
 {
     <div class="form">
         @Html.AntiForgeryToken()
 
-        <div class="subtitle">Prescribe here!</div>
+        <div class="subtitle">Treatment here!</div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="flex">
             <div class="input-container ic1">
@@ -202,9 +202,9 @@
 
             </div>
             <div class="input-container ic2">
-                @Html.TextBoxFor(m => m.Prescription, new { @class = "input" })
+                @Html.TextBoxFor(m => m.Medicines, new { @class = "input" })
                 <div class="cutConfirm"></div>
-                @Html.LabelFor(m => m.Prescription, new { @class = "placeholder" })
+                @Html.LabelFor(m => m.Medicines, new { @class = "placeholder" })
             </div>
         </div>
     

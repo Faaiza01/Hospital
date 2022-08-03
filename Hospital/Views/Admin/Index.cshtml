@@ -114,6 +114,8 @@
 <hr class="line">
 <ul>
     <li class="table-header list">
+        <div class="col col-2"> @Html.DisplayNameFor(model => model.PatientId)</div>
+
         <div class="col col-2"> @Html.DisplayNameFor(model => model.FirstName)</div>
 
         <div class="col col-2"> @Html.DisplayNameFor(model => model.LastName)</div>
@@ -126,25 +128,27 @@
 <ul>
     @foreach (var item in Model)
     {
-        <li class="table-row list">
-            <div class="col col-2" data-label="Hospital Id"> @item.FirstName</div>
+    <li class="table-row list">
+        <div class="col col-2" data-label="Hospital Id"> @item.PatientId</div>
 
-            <div class="col col-2" data-label="Payment Status">@item.LastName </div>
-            <div class="col col-2" data-label="Amount">@item.Email</div>
-            <div class="col col-2" data-label="Customer Name">@item.Role</div>
+        <div class="col col-2" data-label="Hospital Id"> @item.FirstName</div>
 
-            <div class="col col-2" data-label="Amount">
-                <div class="buttonred">
-                    <a href="#" class="btntext alink">
-                        @Html.ActionLink("Remove", "RemoveLogin", new
+        <div class="col col-2" data-label="Payment Status">@item.LastName </div>
+        <div class="col col-2" data-label="Amount">@item.Email</div>
+        <div class="col col-2" data-label="Customer Name">@item.Role</div>
+
+        <div class="col col-2" data-label="Amount">
+            <div class="buttonred">
+                <a href="#" class="btntext alink">
+                    @Html.ActionLink("Remove", "RemoveLogin", new
                     {
-                    id =item.IdentityId
+                        id = item.IdentityId
                     })
-                    </a>
-                </div>
+                </a>
             </div>
+        </div>
 
-        </li>
+    </li>
 
 
 

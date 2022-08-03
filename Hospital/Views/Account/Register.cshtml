@@ -218,7 +218,7 @@
     </div>
 
     <div class="flex">
-   
+
         <div class="input-container ic2">
             <select class="role_select" asp-for="@Html.EditorFor(model => model.Gender)">
                 @Html.LabelFor(m => m.Gender, new { @class = "placeholder" })
@@ -227,7 +227,13 @@
                 <option value="Female">Female</option>
             </select>
 
+        </div>
+        <div class="input-container ic2">
 
+            @Html.TextBoxFor(m => m.PatientId, new { @class = "input" })
+
+            <div class="cut"></div>
+            @Html.LabelFor(m => m.PatientId, new { @class = "placeholder" })
 
         </div>
     </div>

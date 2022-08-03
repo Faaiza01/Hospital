@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Hospital.Data.Models.Domain
 {
-    public class Prescription
+    public class Treatment
     {
         [Key]
-        public int PrescriptionId { get; set; }
+        public int TreatmentId { get; set; }
         public int AppointmentId { get; set; }
         public string Symptoms { get; set; }
         public string Diseases { get; set; }
         public string Allergies { get; set; }
-        public string Prescriptions { get; set; }
+        public string Medicines { get; set; }
 
     }
 }

@@ -18,10 +18,10 @@ namespace Hospital.Services.IService
         void DeleteDoctor(int id);
         IList<DAppointmentHistory> GetDoctorAppointmentHistory(int userId);
         void CancelAppointmentByDoctor(int appointmentId);
-        void Prescribe(PrescribeDto prescribeDto, int id);
-        IList<DPrescriptionListDto> GetPrescriptionList(int userId);
-        IList<PPrescriptionListDto> GetPatientPrescriptionList(int userId);
-        IList<AllPrescriptionListDto> GetAllPrescriptionList();
+        void Treatment(TreatmentDto prescribeDto, int id);
+        IList<DTreatmentListDto> GetTreatmentList(int userId);
+        IList<PTreatmentListDto> GetPatientTreatmentList(int userId);
+        IList<AllTreatmentListDto> GetAllTreatmentList();
         void AddUser(Users Users);
         void RemovePatient(string id);
         Users GetUserData(string id);

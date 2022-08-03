@@ -9,28 +9,28 @@ using System.Web.Mvc;
 
 namespace Hospital.Controllers
 {
-    public class PrescriptionController : Controller
+    public class TreatmentController : Controller
     {
         private IUserService UserService;
 
-        public PrescriptionController()
+        public TreatmentController()
         {
             UserService = new UserService();
         }
-        // GET: Prescription
+        // GET: Treatment
         public ActionResult Index()
         {
             var identityId = User.Identity.GetUserId();
 
             var user = UserService.GetUserData(identityId);
-            ViewBag.perscriptions = UserService.GetPrescriptionList(user.UserId);
+            ViewBag.perscriptions = UserService.GetTreatmentList(user.UserId);
             return View(ViewBag.perscriptions);
         }
 
-        public ActionResult PrescriptionList()
+        public ActionResult TreatmentList()
         {
-            ViewBag.allPrescription = UserService.GetAllPrescriptionList();
-            return View(ViewBag.allPrescription);
+            ViewBag.allTreatment = UserService.GetAllTreatmentList();
+            return View(ViewBag.allTreatment);
 
         }
 
