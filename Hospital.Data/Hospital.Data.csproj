@@ -97,7 +97,7 @@
     <Compile Include="Models\Domain\Appointment.cs" />
     <Compile Include="Models\Domain\Treatment.cs" />
     <Compile Include="Models\Domain\Users.cs" />
-    <Compile Include="PTreatmentPrescriptionListDto.cs" />
+    <Compile Include="PTreatmentListDto.cs" />
     <Compile Include="TreatmentDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\HospitalContext.cs" />

@@ -16,7 +16,7 @@ namespace Hospital.Data
         public string Symptoms { get; set; }
         public string Diseases { get; set; }
         public string Allergies { get; set; }
-        public string Treatments { get; set; }
+        public string Medicines { get; set; }
 
     }
 }

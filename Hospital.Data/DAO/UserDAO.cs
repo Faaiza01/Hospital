@@ -114,7 +114,7 @@ namespace Hospital.Data.DAO
                 dTreatmentListDto.Symptoms = Treatments.Symptoms;
                 dTreatmentListDto.Diseases = Treatments.Diseases;
                 dTreatmentListDto.Allergies = Treatments.Allergies;
-                dTreatmentListDto.Treatments = Treatments.Medicines;
+                dTreatmentListDto.Medicines = Treatments.Medicines;
                 dTreatmentListDtos.Add(dTreatmentListDto);
             }
             return dTreatmentListDtos;
@@ -138,7 +138,7 @@ namespace Hospital.Data.DAO
                 pTreatmentListDto.Symptoms = Treatments?.Symptoms;
                 pTreatmentListDto.Diseases = Treatments?.Diseases;
                 pTreatmentListDto.Allergies = Treatments?.Allergies;
-                pTreatmentListDto.Treatments = Treatments?.Medicines;
+                pTreatmentListDto.Medicines = Treatments?.Medicines;
                 pTreatmentListDtos.Add(pTreatmentListDto);
             }
             return pTreatmentListDtos;
@@ -164,7 +164,7 @@ namespace Hospital.Data.DAO
                 TreatmentListDto.Symptoms = Treatments?.Symptoms;
                 TreatmentListDto.Diseases = Treatments?.Diseases;
                 TreatmentListDto.Allergies = Treatments?.Allergies;
-                TreatmentListDto.Treatments = Treatments?.Medicines;
+                TreatmentListDto.Medicines = Treatments?.Medicines;
                 allTreatmentListDtos.Add(TreatmentListDto);
             }
             return allTreatmentListDtos;
